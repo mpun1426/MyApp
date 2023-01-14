@@ -1,25 +1,31 @@
 <div class="row gx-0">
-  <div class="col-2">
-    <div class="sidebar_content bg-primary p-3" style="height: 700px;">
-      サイドメニューバー
+  <div class="col-12 position-relative">
+    <div class="col-12 col-md-10 col-xl-9 position-absolute top-50 start-50 translate-middle">
+      <h1 class="display-1 font-m-700">Sharecoへようこそ</h1>
+      <p class="font-m-500">
+        買うほどではないけど使いたい…買いたいけど買えない…<br>
+        買ったけど今は使っていない…使う予定はるけど今すぐではない…
+      </p>
+      <h4 class="font-m-500">
+        いま使っていない物を、いま使いたい人に貸してあげよう<br>
+        使いたいけど持っていない物を、いま使っていない人からレンタルしよう
+      </h4>
     </div>
-  </div>
-  <div class="col-10">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button type="button" style="width: 300px; margin-right: 12px;" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" style="width: 300px;" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
         <button type="button" style="width: 300px; margin-left: 12px;" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
       </div>
-      <div class="carousel-inner" style="max-height: 600px;">
+      <div class="carousel-inner opacity03" style="max-height: 800px;">
         <div class="carousel-item active">
-          <%= image_tag 'sample.jpg', class: "d-block w-100", alt: "sample-img" %>
+          <%= image_tag 'share1.jpg', class: "d-block w-100", alt: "slider1-img", style: "max-height: 800px; object-fit: cover; object-position: 0 90%;" %>
         </div>
         <div class="carousel-item">
-          <%= image_tag 'sample.jpg', class: "d-block w-100", alt: "sample-img" %>
+          <%= image_tag 'share2.jpg', class: "d-block w-100", alt: "slider1-img", style: "max-height: 800px; object-fit: cover; object-position: 0 50%;" %>
         </div>
         <div class="carousel-item">
-          <%= image_tag 'sample.jpg', class: "d-block w-100", alt: "sample-img" %>
+          <%= image_tag 'sample.jpg', class: "d-block w-100", alt: "slider3-img" %>
         </div>
       </div>
     </div>

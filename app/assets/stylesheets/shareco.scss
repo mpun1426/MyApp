@@ -1,3 +1,76 @@
 // Place all the styles related to the shareco controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap');
+
+.topborder {
+  height: 4px;
+  background-color: #7DD956;
+}
+
+.nonebutton {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.roundbutton {
+  border: 0px;
+  border-radius: 25px;
+  background-color: #7DD956;
+  text-align: center;
+  margin-top: 5px;
+  transition: 0.3s
+}
+
+.roundbutton:hover {
+  opacity: 0.7;
+}
+
+.py6px {
+  padding: 6px 0 !important;
+}
+
+.font-white {
+  color: #FFFFFF !important;
+}
+
+.nondeco {
+  text-decoration: none;
+}
+
+.lborder {
+  border-left: 1px solid #000000;
+  margin-left: -1px;
+}
+
+.rborder {
+  border-right: 1px solid #000000;
+}
+
+.minwidth100 {
+  min-width: 150px;
+  text-align: center;
+}
+
+.opacity03 {
+  opacity: 0.3;
+}
+
+.font-k {
+  font-family: 'Kosugi Maru', sans-serif;
+}
+
+.font-m-400 {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: 400 !important;
+}
+
+.font-m-500 {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: 500 !important;
+}
+
+.font-m-700 {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: 700 !important;
+}
