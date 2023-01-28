@@ -18,4 +18,6 @@
     <%= f.submit t('.sign_in') %>
   </div>
 <% end %>
+<span class="small">または</span><br>
+<%= link_to 'ゲストログイン', users_guest_login_path, method: :post %><br>
 <%= render "devise/shared/links" %>
