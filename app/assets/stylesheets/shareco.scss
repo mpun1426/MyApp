@@ -26,6 +26,14 @@
   opacity: 0.7;
 }
 
+.hoveropacity {
+  transition: 0.3s
+}
+
+.hoveropacity:hover {
+  opacity: 0.7;
+}
+
 .py6px {
   padding: 6px 0 !important;
 }

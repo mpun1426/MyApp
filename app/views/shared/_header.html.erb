@@ -15,25 +15,40 @@
       <div class="col d-flex align-items-center justify-content-end">
         <nav class="navbar navbar-expand-lg">
           <div class="container-fluid" style="min-width: 170px;">
-            <!-- <a class="navbar-brand" href="#">ユーザーメニュー</a> -->
-            <button class="navbar-toggler nonebutton" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <!-- <span class="navbar-toggler-icon"></span> -->
-              <span class="small" style="color: #7DD956;">▶ USER MENU</span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav">
-                <%= link_to '#', class: "nondeco" do %>
-                  <div class="roundbutton px-lg-3 py-lg-1 ms-lg-3">
-                    <span class="nav-link py6px font-white">ユーザー登録</span>
-                  </div>
+            <% if user_signed_in? %>
+              <div class="dropdown">
+                <% if current_user.avatar? %>
+                  <%= link_to image_tag(current_user.avatar_url(:icon)), '#', class: "dropdown-toggle hoveropacity", role: "button", "data-bs-toggle": "dropdown", "aria-expanded": "false" %>
                 <% end %>
-                <%= link_to '#', class: "nondeco" do %>
-                  <div class="roundbutton px-lg-3 py-lg-1 ms-lg-3">
-                    <span class="nav-link py6px font-white">ログイン</span>
-                  </div>
-                <% end %>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><span class="dropdown-item-text" style="pointer-events: none;"><%= current_user.nickname %> さん</span></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">ユーザーメニュー１</a></li>
+                  <li><a class="dropdown-item" href="#">ユーザーメニュー２</a></li>
+                  <li><a class="dropdown-item" href="#">ユーザーメニュー３</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item nondeco" %></li>
+                </ul>
               </div>
-            </div>
+            <% else %>
+              <button class="navbar-toggler nonebutton" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="small" style="color: #7DD956;">▶ USER MENU</span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <%= link_to new_user_registration_path, class: "nondeco" do %>
+                    <div class="roundbutton px-lg-3 py-lg-1 ms-lg-3">
+                      <span class="nav-link py6px font-white">ユーザー登録</span>
+                    </div>
+                  <% end %>
+                  <%= link_to new_user_session_path, class: "nondeco" do %>
+                    <div class="roundbutton px-lg-3 py-lg-1 ms-lg-3">
+                      <span class="nav-link py6px font-white">ログイン</span>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
           </div>
         </nav>
       </div>
@@ -82,7 +97,7 @@
         </li> -->
       </ul>
       <form class="d-flex">
-        <input class="form-control me-2" style="min-width: 250px;" type="search" placeholder="キーワード検索" aria-label="Search">
+        <input class="form-control me-2" style="min-width: 250px;" type="search" placeholder="フリーワード検索" aria-label="Search">
         <button class="btn btn-outline-dark" style="min-width: 70px;" type="submit">検索</button>
       </form>
     </div>
