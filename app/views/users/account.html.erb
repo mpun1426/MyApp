@@ -1,0 +1,35 @@
+<% if current_user.present? %>
+  <div class="container_users">
+    <div class="main_menu_users_menu">
+      <div class="user_admin_show">
+        <h2>マイページ</h2>
+        <div class="ul">
+          <div class="user_bold_inbl">アバター</div>
+          <% if current_user.avatar? %>
+            <div class="user_inbl"><%= image_tag(current_user.avatar.url) %></div>
+          <% else %>
+            <div class="user_inbl"><%#= image_tag('sample.jpeg') %></div>
+          <% end %>
+        </div>
+        <div class="ul">
+          <div class="user_bold">ニックネーム</div>
+          <div class="user_ib"><%= current_user.nickname %></div>
+        </div>
+        <div class="ul">
+          <div class="user_bold">一言紹介</div>
+          <div class="user_ib"><%= current_user.introduction %></div>
+        </div>
+        <div class="ul">
+          <div class="user_bold">メールアドレス</div>
+          <div class="user_ib"><%= current_user.email %></div>
+        </div>
+        <div class="ul">
+          <div class="user_bold">パスワード</div>
+          <div class="user_ib">表示されません</div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <%= render 'shared/nologin' %>
+<% end %>
