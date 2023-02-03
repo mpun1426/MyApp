@@ -3,9 +3,8 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap');
 
-.topborder {
-  height: 4px;
-  background-color: #7DD956;
+.underborder {
+  border-bottom: 2px solid #b4b4b4;
 }
 
 .nonebutton {
@@ -81,4 +80,25 @@
 .font-m-700 {
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-weight: 700 !important;
+}
+
+.homeform {
+  height: 50px;
+  margin: 10px 0;
+}
+
+.searchform {
+  min-width: 220px;
+  border: 1px solid #E0E0E0 !important;
+  border-radius: 25px 0 0 25px !important;
+  border-right: none !important;
+  box-shadow: 0px 3px 5px #A0A0A0;
+}
+
+.searchbutton {
+  min-width: 70px;
+  border: 1px solid #000000 !important;
+  border-left: none !important;
+  border-radius: 0 25px 25px 0 !important;
+  box-shadow: 0px 3px 5px #A0A0A0;
 }

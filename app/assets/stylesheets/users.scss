@@ -1,3 +1,90 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.avatar img {
+  width: 65px;
+  height: 65px;
+  border: 2px solid #00D53A;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.nonlogin img {
+  height: 65px;
+  border: 1px solid #9F9F9F;
+  border-radius: 35px;
+  padding: 6px;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.wrapping-login {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto 50px;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.wrapping-login::after {
+  width: 130px;
+  background-color: #ffc107;
+  border-radius: 4px;
+  content: "";
+  display: block;
+  margin: 4px auto;
+  height: 8px;
+}
+
+.wrapping-signup {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto 30px;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.wrapping-signup::after {
+  width: 220px;
+  background-color: #ffc107;
+  border-radius: 4px;
+  content: "";
+  display: block;
+  margin: 4px auto;
+  height: 8px;
+}
+
+.rm {
+  vertical-align: sub;
+  margin-left: 5px;
+  font-size: 17px;
+}
+
+.max600 {
+  max-width: 600px;
+}
+
+.widebutton {
+  width: 350px;
+  height: 60px;
+  font-size: 20px !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center !important;
+  margin: 0 auto;
+}
+
+.form-check-input {
+  width: 1.5em !important;
+  height: 1.5em !important;
+}
+
+.form-check-input:checked {
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+}
