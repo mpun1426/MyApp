@@ -1,23 +1,35 @@
-<h2><%= t('.sign_in') %></h2>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="py-5 bg-light">
+  <div class="container">
+    <div class="row justify-content-center py-4">
+      <div class="col-sm-9 p-3"  data-turbolinks="false">
+        <h2 class="wrapping-login">ログイン</h2>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-floating mb-3 mx-auto max600">
+            <%= f.email_field :email, id: "floatingInput", class: "form-control", placeholder: "メールアドレス", autocomplete: "email" %>
+            <%= f.label :email, "メールアドレス", for: "floatingInput" %>
+          </div>
+          <div class="form-floating mb-3 mx-auto max600">
+            <%= f.password_field :password, id: "floatingPassword", class: "form-control", placeholder: "パスワード", autocomplete: "current-password" %>
+            <%= f.label :password, "パスワード", for: "floatingPassword" %>
+          </div>
+          <% if devise_mapping.rememberable? %>
+            <div class="form-check mb-4 mx-auto max600">
+              <%= f.check_box :remember_me, id: "exampleCheck1", class: "form-check-input" %>
+              <%= f.label :remember_me, "ログイン状態を保持する", class: "form-check-label rm", for: "exampleCheck1" %>
+            </div>
+          <% end %>
+          <div class="py-2 mx-auto max600">
+            <%= f.submit "ログイン", class: "btn btn-dark widebutton" %>
+          </div>
+        <% end %>
+        <div class="small my-2 text-center">または</div>
+        <div class="py-2 mx-auto max600">
+          <%= link_to 'ゲストログイン', users_guest_login_path, method: :post, class: "btn btn-dark widebutton" %><br>
+        </div>
+        <div class="mb-4 mx-auto text-center" style="font-size:18px;">
+          初めてご利用の場合：<%= link_to "アカウント登録", new_user_registration_path %>
+        </div>
+      </div>
     </div>
-  <% end %>
-  <div class="actions">
-    <%= f.submit t('.sign_in') %>
   </div>
-<% end %>
-<span class="small">または</span><br>
-<%= link_to 'ゲストログイン', users_guest_login_path, method: :post %><br>
-<%= render "devise/shared/links" %>
+</div>

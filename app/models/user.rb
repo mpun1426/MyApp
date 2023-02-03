@@ -4,6 +4,8 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
+  validates :nickname, presence: true
+
   def self.guest
     find_or_create_by!(email: 'guest@email.com') do |user|
       user.nickname = "ゲストユーザー"
