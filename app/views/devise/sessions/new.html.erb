@@ -5,11 +5,11 @@
         <h2 class="wrapping-login">ログイン</h2>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="form-floating mb-3 mx-auto max600">
-            <%= f.email_field :email, id: "floatingInput", class: "form-control", placeholder: "メールアドレス", autocomplete: "email" %>
+            <%= f.email_field :email, id: "floatingInput", class: "form-control", placeholder: "メールアドレス", autocomplete: "email", required: true %>
             <%= f.label :email, "メールアドレス", for: "floatingInput" %>
           </div>
           <div class="form-floating mb-3 mx-auto max600">
-            <%= f.password_field :password, id: "floatingPassword", class: "form-control", placeholder: "パスワード", autocomplete: "current-password" %>
+            <%= f.password_field :password, id: "floatingPassword", class: "form-control", placeholder: "パスワード", autocomplete: "current-password", required: true %>
             <%= f.label :password, "パスワード", for: "floatingPassword" %>
           </div>
           <% if devise_mapping.rememberable? %>
