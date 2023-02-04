@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   devise_scope :user do
     post 'users/guest_login', to: 'users/sessions#guest_login'
+    get 'users', to: redirect('users/sign_up')
   end
   get 'users/account'
   resources :shareco
