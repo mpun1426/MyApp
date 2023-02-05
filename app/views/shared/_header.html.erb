@@ -28,7 +28,7 @@
                 <li><span class="dropdown-item-text" style="pointer-events: none;"><%= current_user.nickname %> さん</span></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><%= link_to "マイページ", users_account_path, class: "dropdown-item" %></li>
-                <li><a class="dropdown-item" href="#">ユーザーメニュー２</a></li>
+                <li><%= link_to "アカウント設定", edit_user_registration_path, class: "dropdown-item" %></li>
                 <li><a class="dropdown-item" href="#">ユーザーメニュー３</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item nondeco" %></li>

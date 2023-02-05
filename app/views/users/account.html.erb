@@ -1,35 +1,42 @@
-<% if current_user.present? %>
-  <div class="container_users">
-    <div class="main_menu_users_menu">
-      <div class="user_admin_show">
-        <h2>マイページ</h2>
-        <div class="ul">
-          <div class="user_bold_inbl">アバター</div>
-          <% if current_user.avatar? %>
-            <div class="user_inbl"><%= image_tag(current_user.avatar.url) %></div>
-          <% else %>
-            <div class="user_inbl"><%#= image_tag('sample.jpeg') %></div>
-          <% end %>
-        </div>
-        <div class="ul">
-          <div class="user_bold">ニックネーム</div>
-          <div class="user_ib"><%= current_user.nickname %></div>
-        </div>
-        <div class="ul">
-          <div class="user_bold">一言紹介</div>
-          <div class="user_ib"><%= current_user.introduction %></div>
-        </div>
-        <div class="ul">
-          <div class="user_bold">メールアドレス</div>
-          <div class="user_ib"><%= current_user.email %></div>
-        </div>
-        <div class="ul">
-          <div class="user_bold">パスワード</div>
-          <div class="user_ib">表示されません</div>
+<div class="py-4 bg-light">
+  <% if current_user.present? %>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm-9 p-3">
+          <h2 class="wrapping-signup text-center mt-4">マイページ</h2>
+          <div class="text-center mt-3 mb-4">
+            <% if current_user.avatar? %>
+              <%= image_tag current_user.avatar.url, size: '200x200' %>
+            <% else %>
+              <%= image_tag 'sampleavatar.jpeg', size: '200x200' %>
+            <% end %>
+          </div>
+          <div class="col-12 col-lg-8 mx-auto">
+            <table class="mypagetable table font-m-400 mx-auto">
+              <tbody class="px-3">
+                <tr>
+                  <th scope="row">ニックネーム</th>
+                  <td><%= current_user.nickname %></td>
+                </tr>
+                <tr>
+                  <th scope="row">一言紹介</th>
+                  <td colspan="2"><%= current_user.introduction %></td>
+                </tr>
+                <tr>
+                  <th scope="row">メールアドレス</th>
+                  <td><%= current_user.email %></td>
+                </tr>
+                <tr>
+                  <th scope="row">パスワード</th>
+                  <td colspan="2">表示されません</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-<% else %>
-  <%= render 'shared/nologin' %>
-<% end %>
+  <% else %>
+    <%= render 'shared/nologin' %>
+  <% end %>
+</div>
