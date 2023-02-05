@@ -1,6 +1,7 @@
+<div class="top-space"></div>
 <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top underborder" data-turbolinks="false">
   <div class="container-fluid mx-md-3">
-    <div class="col me-sm-2 me-lg-5">
+    <div class="col me-sm-2 me-lg-5 headerheight">
       <%= link_to root_path do %>
         <%= image_tag 'banner.png', alt: "banner", style: "max-height: 70px;" %>
       <% end %>
@@ -48,3 +49,4 @@
     </div>
   </div>
 </nav>
+<%= render 'shared/flash' %>

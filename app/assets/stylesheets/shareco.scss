@@ -7,8 +7,20 @@
   border-bottom: 2px solid #b4b4b4;
 }
 
+.headerheight {
+  height: 85px;
+  display: flex;
+  align-items: center;
+}
+
+.flashmessage {
+  position: fixed !important;
+  z-index: 10 !important;
+  width: 100% !important;
+}
+
 .top-space {
-  margin-top: 80px;
+  margin-top: 100px;
 }
 
 .nonebutton {

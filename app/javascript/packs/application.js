@@ -13,3 +13,7 @@ import "../src/application"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+$(function(){
+  setTimeout("$('.alert').fadeOut('fast')", 2500);
+});
