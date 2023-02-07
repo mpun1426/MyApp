@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap');
 
 .underborder {
-  border-bottom: 2px solid #b4b4b4;
+  border-bottom: 1px solid #DADADA;
 }
 
 .headerheight {
@@ -117,4 +117,8 @@
   border-left: none !important;
   border-radius: 0 25px 25px 0 !important;
   box-shadow: 0px 3px 5px #A0A0A0;
+}
+
+.spotmenu-shadow {
+  box-shadow: 0px 0px 10px 0px #BBBBBB;
 }
