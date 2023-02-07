@@ -1,8 +1,8 @@
 require "test_helper"
 
-class SharecoControllerTest < ActionDispatch::IntegrationTest
+class TopControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get shareco_index_url
+    get top_index_url
     assert_response :success
   end
 end

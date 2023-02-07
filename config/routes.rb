@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'shareco#index'
+  root 'top#index'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
@@ -8,6 +8,6 @@ Rails.application.routes.draw do
     get 'users', to: redirect('users/sign_up')
   end
   get 'users/account'
-  resources :shareco
+  resources :top, only: [:index]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
