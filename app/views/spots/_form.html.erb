@@ -1,0 +1,42 @@
+<%= form_with(model: spot) do |form| %>
+  <% if spot.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(spot.errors.count, "error") %> prohibited this spot from being saved:</h2>
+      <ul>
+        <% spot.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name, "スポット名" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address, "所在地" %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :feature, "スポットの特徴" %>
+    <%= form.text_field :feature %>
+  </div>
+
+  <div class="field">
+    <%= form.label :describe, "スポットの説明" %>
+    <%= form.text_area :describe %>
+  </div>
+
+  <div class="field">
+    <%= form.label :images, "スポットの画像" %>
+    <%= form.text_field :images %>
+  </div>
+
+  <div class="actions">
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.submit "完了ボタン" %>
+  </div>
+<% end %>

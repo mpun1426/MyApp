@@ -1,0 +1,36 @@
+<%= render 'shared/spotmenu' %>
+<div class="container" data-turbolinks="false">
+  <h1>おすすめスポット詳細</h1>
+  <p>
+    <strong>スポット投稿者：</strong>
+    <%= @spot.user.nickname %>
+  </p>
+
+  <p>
+    <strong>スポット名：</strong>
+    <%= @spot.name %>
+  </p>
+
+  <p>
+    <strong>スポットの所在地：</strong>
+    <%= @spot.address %>
+  </p>
+
+  <p>
+    <strong>スポットの特徴：</strong>
+    <%= @spot.feature %>
+  </p>
+
+  <p>
+    <strong>スポットの説明：</strong>
+    <%= @spot.describe %>
+  </p>
+
+  <p>
+    <strong>スポットの画像：</strong>
+    <%= @spot.images %>
+  </p>
+
+  <%= link_to '編集', edit_spot_path(@spot) %> |
+  <%= link_to '戻る', spots_path %>
+</div>
