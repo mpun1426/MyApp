@@ -1,31 +1,4 @@
-<div class="container-fluid text-center py-3 spotmenu-shadow">
-  <div class="row">
-    <div class="col">
-      <div class="body_menu_airphp_logo"><%= image_tag 'kyoto.jpeg' %></div>
-      <div class="body_menu_airphp_name">東京</div>
-    </div>
-    <div class="col">
-      <div class="body_menu_airphp_logo"><%= image_tag 'kyoto.jpeg' %></div>
-      <div class="body_menu_airphp_name">大阪</div>
-    </div>
-    <div class="col">
-      <div class="body_menu_airphp_logo"><%= image_tag 'kyoto.jpeg' %></div>
-      <div class="body_menu_airphp_name">京都</div>
-    </div>
-    <div class="col">
-      <div class="body_menu_airphp_logo"><%= image_tag 'kyoto.jpeg' %></div>
-      <div class="body_menu_airphp_name">大分</div>
-    </div>
-    <div class="col">
-      <div class="body_menu_airphp_logo"><%= image_tag 'kyoto.jpeg' %></div>
-      <div class="body_menu_airphp_name">広島</div>
-    </div>
-    <div class="col">
-      <div class="body_menu_airphp_logo"><%= image_tag 'kyoto.jpeg' %></div>
-      <div class="body_menu_airphp_name">愛媛</div>
-    </div>
-  </div>
-</div>
+<%= render 'shared/spotmenu' %>
 <div class="row gx-0">
   <div class="col-12 position-relative">
     <div class="col-12 col-md-10 col-xl-9 position-absolute top-50 start-50 translate-middle">
@@ -47,13 +20,13 @@
       </div>
       <div class="carousel-inner opacity03" style="max-height: 800px;">
         <div class="carousel-item active">
-          <%= image_tag 'top2.jpg', class: "d-block w-100", alt: "slider1-img", style: "max-height: 800px; object-fit: cover; object-position: 0 35%;" %>
+          <%= image_tag 'top1.jpg', class: "d-block w-100", alt: "slider1-img", style: "max-height: 800px; object-fit: cover; object-position: 0 35%;" %>
         </div>
         <div class="carousel-item">
-          <%= image_tag 'share2.jpg', class: "d-block w-100", alt: "slider2-img", style: "max-height: 800px; object-fit: cover; object-position: 0 50%;" %>
+          <%= image_tag 'top2.jpg', class: "d-block w-100", alt: "slider2-img", style: "max-height: 800px; object-fit: cover; object-position: 0 50%;" %>
         </div>
         <div class="carousel-item">
-          <%= image_tag 'share3.jpg', class: "d-block w-100", alt: "slider3-img", style: "max-height: 800px; object-fit: cover; object-position: 0 80%;" %>
+          <%= image_tag 'top3.jpg', class: "d-block w-100", alt: "slider3-img", style: "max-height: 800px; object-fit: cover; object-position: 0 80%;" %>
         </div>
       </div>
     </div>

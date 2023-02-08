@@ -1,9 +1,9 @@
 <div class="top-space"></div>
 <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top underborder" data-turbolinks="false">
   <div class="container-fluid mx-md-3">
-    <div class="col me-sm-2 me-lg-5 headerheight">
+    <div class="col col-md-5 me-sm-2 headerheight">
       <%= link_to root_path do %>
-        <%= image_tag 'banner.png', alt: "banner", style: "max-height: 70px;" %>
+        <%= image_tag 'banner.png', alt: "banner", class: "img-fluid", style: "max-height: 70px;" %>
       <% end %>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,7 +30,8 @@
                 <li><hr class="dropdown-divider"></li>
                 <li><%= link_to "マイページ", users_account_path, class: "dropdown-item" %></li>
                 <li><%= link_to "アカウント設定", edit_user_registration_path, class: "dropdown-item" %></li>
-                <li><a class="dropdown-item" href="#">ユーザーメニュー３</a></li>
+                <li><%= link_to "おすすめスポット一覧", spots_path, class: "dropdown-item" %></li>
+                <li><%= link_to "おすすめスポット新規投稿", new_spot_path, class: "dropdown-item" %></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item nondeco" %></li>
               </ul>
@@ -41,6 +42,8 @@
               <ul class="dropdown-menu dropdown-menu-end font-m-400">
                 <li><%= link_to "ログイン", new_user_session_path, class: "dropdown-item", style: "font-weight:bold;" %></li>
                 <li><%= link_to "ユーザー登録", new_user_registration_path, class: "dropdown-item nondeco" %></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><%= link_to "スポット一覧を見てみる", spots_path, class: "dropdown-item" %></li>
               </ul>
             </div>
           <% end %>
