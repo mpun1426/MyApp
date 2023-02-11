@@ -3,17 +3,16 @@
   <div class="row my-3 mx-2">
     <% @spots.each do |spot| %>
       <div class="col-12 col-md-6 col-lg-4 col-xl-3 p-3 p-md-4 d-flex justify-content-center">
-        <div class="card w-100" style="width: 18rem;">
-          <%= image_tag 'sample.jpg', class: "card-img-top", alt: "Spot photo" %>
-          <div class="card-body">
-            <h5 class="card-title"><%= spot.name %></h5>
-            <p class="card-text"><%= spot.address %></p>
-            <p class="card-text spot-describe"><%= spot.describe %></p>
-            <%= link_to '詳細', spot, class: "btn btn-primary" %>
-            <%= link_to '編集', edit_spot_path(spot), class: "btn btn-primary" %>
-            <%= link_to '削除', spot, method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-primary" %>
+        <%= link_to spot, class: "nondeco overhidden" do %>
+          <div class="card w-100 nonebutton" style="width: 18rem;">
+            <%= image_tag 'sample.jpg', class: "card-img-top spot-thumb", alt: "Spot photo" %>
+            <div class="card-body px-1 py-2">
+              <h5 class="card-title spot-text-main font-m-500 mb-1"><%= spot.name %></h5>
+              <p class="card-text spot-address font-m-400 mb-1"><%= spot.address %></p>
+              <p class="card-text spot-describe spot-text-sub font-m-400 lh-sm pe-3"><%= spot.describe %></p>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     <% end %>
   </div>
