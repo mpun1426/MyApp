@@ -5,7 +5,11 @@
       <div class="col-12 col-md-6 col-lg-4 col-xl-3 p-3 p-md-4 d-flex justify-content-center">
         <%= link_to spot, class: "nondeco overhidden" do %>
           <div class="card w-100 nonebutton" style="width: 18rem;">
-            <%= image_tag 'sample.jpg', class: "card-img-top spot-thumb", alt: "Spot photo" %>
+            <% if spot.images.attached? %>
+              <%= image_tag spot.images[0], class: "card-img-top spot-thumb" %>
+            <% else %>
+              <%= image_tag 'sample.jpg', class: "card-img-top spot-thumb", alt: "Spot photo" %>
+            <% end%>
             <div class="card-body px-1 py-2">
               <h5 class="card-title spot-text-main font-m-500 mb-1"><%= spot.name %></h5>
               <p class="card-text spot-address font-m-400 mb-1"><%= spot.address %></p>
@@ -40,7 +44,6 @@
         <td><%= spot.address %></td>
         <td><%= spot.feature %></td>
         <td><%= spot.describe %></td>
-        <td><%= spot.images %></td>
         <td><%= link_to '詳細', spot %></td>
         <td><%= link_to '編集', edit_spot_path(spot) %></td>
         <td><%= link_to '削除', spot, method: :delete, data: { confirm: "削除しますか？" } %></td>

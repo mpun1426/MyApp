@@ -1,7 +1,7 @@
 <%= form_with(model: spot) do |form| %>
   <% if spot.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(spot.errors.count, "error") %> prohibited this spot from being saved:</h2>
+      <h2><%= pluralize(spot.errors.count, "件") %>のエラーが発生しました</h2>
       <ul>
         <% spot.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -32,7 +32,7 @@
 
   <div class="field">
     <%= form.label :images, "スポットの画像" %>
-    <%= form.text_field :images %>
+    <%= form.file_field :images, multiple: true, accept: "image/*" %>
   </div>
 
   <div class="actions">
