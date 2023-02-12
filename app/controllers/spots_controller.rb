@@ -3,7 +3,7 @@ class SpotsController < ApplicationController
 
   # GET /spots or /spots.json
   def index
-    @spots = Spot.all
+    @spots = Spot.with_attached_images
   end
 
   # GET /spots/1 or /spots/1.json
