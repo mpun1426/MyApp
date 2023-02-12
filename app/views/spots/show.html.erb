@@ -30,7 +30,7 @@
     <strong>スポットの画像：</strong>
     <% if @spot.images.attached? %>
       <% @spot.images.each do |image| %>
-        <%= image_tag image.variant(resize_to_limit: [300,300]), class: "board-images" %>
+        <%= image_tag image.variant(resize: "800x600", gravity: "center", crop: "700x520+1+0", quality: 80).processed, class: "board-images" %>
       <% end %>
     <% end %>
   </p>

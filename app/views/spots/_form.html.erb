@@ -33,6 +33,11 @@
   <div class="field">
     <%= form.label :images, "スポットの画像" %>
     <%= form.file_field :images, multiple: true, accept: "image/*" %>
+    <% if @spot.images.attached? %>
+      <% @spot.images.each do |image| %>
+        <%= image_tag image.variant(resize_to_limit: [300,300]), class: "board-images" %>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="actions">
