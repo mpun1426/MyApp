@@ -1,5 +1,86 @@
 <%= render 'shared/spotmenu' %>
-<div class="container" data-turbolinks="false">
+<div class="container-fluid"  data-turbolinks="false">
+  <div class="row justify-content-center font-m-400">
+    <div class="col-md-11 my-4 px-4" style="background-color:white; max-width:1100px;">
+      <h1 class="mb-0" style="font-size: clamp(18px, 4vw, 26px);"><%= @spot.name %></h1>
+      <div class="row gx-0 justify-content-end">
+        <div class="col-12 col-md-6">
+          <p class="spot-address-show mb-0 d-inline-block" style="font-size: clamp(11px, 2.5vw, 16px);"><%= @spot.address %></p>
+        </div>
+        <div class="col-6 d-flex justify-content-end">
+          <p class="spot-option-show mb-1 me-2 d-inline-block" style="font-size: clamp(11px, 2.5vw, 16px);">コメント(0)</p>
+          <p class="spot-option-show mb-1 d-inline-block" style="font-size: clamp(11px, 2.5vw, 16px);">♥いいね!(0)</p>
+        </div>
+      </div>
+      <% if @spot.images.attached? %>
+        <div class="container-fluid mb-3 px-0">
+          <div class="row flex-row">
+            <div id="carousel" class="carousel slide carousel-fade col-10 pe-0 pe-sm-3" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <% @spot.images.each_with_index do |image, index| %>
+                  <div class="carousel-item <%= "active" if index.zero? %>" data-thumb="<%= index %>">
+                    <%= image_tag image.variant(resize: "800x600", gravity: "center", crop: "700x520+0+0", quality: 80).processed, class: "w-100" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <%# <div class="clearfix col"> %>
+              <div id="thumbcarousel" class="col carousel slide d-flex flex-column justify-content-center" data-interval="false">
+                <%# <div class="carousel-inner d-flex flex-md-column"> %>
+                  <% @spot.images.each_with_index do |image, index| %>
+                    <%# <div> %>
+                      <%= image_tag image.variant(resize: "800x600", gravity: "center", crop: "700x520+0+0", quality: 50).processed, class: "w-100 my-2", "data-bs-target": "#carousel", "data-bs-slide-to": "#{index}" %>
+                    <%# </div> %>
+                  <% end %>
+                <%# </div> %>
+              </div>
+            <%# </div> %>
+          </div>
+        </div>
+      <% end %>
+      <div class="container-fluid px-0">
+        <div class="row gx-0">
+          <div class="col-md-8 pe-md-3">
+            <div class="row gx-0">
+              <div class="col-10 pe-0 pb-3 border-bottom">
+                <p class="font-m-500 mb-0" style="font-size: clamp(15px, 2.5vw, 24px);"><%= @spot.user.nickname %>さんのおすすめスポット</p>
+                <span style="font-size: clamp(12px, 2.5vw, 17px);"><%= @spot.address %></span>
+              </div>
+              <div class="col-2 d-flex justify-content-end pb-3 border-bottom">
+                <% if @spot.user.avatar.present? %>
+                  <%= image_tag @spot.user.avatar.url(:icon_mini), style: "max-height: 50px;" %>
+                <% else %>
+                  <%= image_tag 'sampleavatar.jpeg', size: '50x50' %>
+                <% end %>
+              </div>
+              <div class="col-12 border-bottom py-3">
+                <span class="font-m-500" style="font-size: clamp(13px, 3vw, 18px);">👀　スポットの特徴：<%= @spot.feature %></span>
+              </div>
+              <div class="col-12 border-bottom py-3" style="font-size: clamp(11px, 2.5vw, 16px);">
+                <span>スポットの説明ですが、<%= @spot.describe %></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mt-4 mt-md-0 ps-md-3">
+            コメント(0)<br>
+            <div class="col border my-3">aa<br>bb</div>
+            <div class="col border my-3">aa<br>bb</div>
+            <div class="col border my-3">aa<br>bb</div>
+            <div class="col border my-3">aa<br>bb</div>
+            <div class="col border my-3">aa<br>bb</div>
+            <div class="col border my-3">aa<br>bb</div>
+          </div>
+        </div>
+      </div>
+
+      <%= link_to '編集', edit_spot_path(@spot) %> |
+      <%= link_to '戻る', spots_path %>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
   <h1>おすすめスポット詳細</h1>
   <p>
     <strong>スポット投稿者：</strong>
@@ -24,15 +105,6 @@
   <p>
     <strong>スポットの説明：</strong>
     <%= @spot.describe %>
-  </p>
-
-  <p>
-    <strong>スポットの画像：</strong>
-    <% if @spot.images.attached? %>
-      <% @spot.images.each do |image| %>
-        <%= image_tag image.variant(resize: "800x600", gravity: "center", crop: "700x520+1+0", quality: 80).processed, class: "board-images" %>
-      <% end %>
-    <% end %>
   </p>
 
   <%= link_to '編集', edit_spot_path(@spot) %> |
