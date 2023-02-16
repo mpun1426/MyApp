@@ -49,3 +49,23 @@
 .overhidden {
   overflow: hidden;
 }
+
+.font11-16 {
+  font-size: clamp(11px, 2.5vw, 16px);
+}
+
+.font12-17 {
+  font-size: clamp(12px, 2.5vw, 17px);
+}
+
+.font15-24 {
+  font-size: clamp(15px, 2.5vw, 24px);
+}
+
+.font18-26 {
+  font-size: clamp(18px, 4vw, 26px);
+}
+
+.minh150 {
+  min-height: 150px;
+}
