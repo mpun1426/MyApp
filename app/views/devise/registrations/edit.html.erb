@@ -6,9 +6,9 @@
         <%= render "devise/shared/error_messages", resource: resource %>
         <h3 class="text-center d-block max600 mx-auto my-3 border-bottom pb-2 border-secondary border-2">アカウント編集</h3>
         <div class="mx-auto pt-3 max600 text-center">現在のアバター</div>
-        <% if current_user.avatar? %>
+        <% if current_user.avatar.attached? %>
           <div class="text-center mt-2 mb-4">
-            <%= image_tag current_user.avatar.url, size: '200x200' %>
+            <%= image_tag current_user.avatar.variant(resize: "200x200", gravity: "center", crop: "200x200+0+0", quality: 70).processed %>
           </div>
         <% else %>
           <div class="py-4 text-center">アバターは登録されていません</div>
