@@ -35,6 +35,7 @@ class SpotsController < ApplicationController
 
   # PATCH/PUT /spots/1 or /spots/1.json
   def update
+    @spot.images.attach(params[:spot][:images]) if @spot.images.blank?
     respond_to do |format|
       if @spot.update(spot_params)
         format.html { redirect_to spot_url(@spot), notice: "おすすめスポットの編集が完了しました" }

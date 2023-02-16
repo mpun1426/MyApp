@@ -2,10 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :spots
-  mount_uploader :avatar, AvatarUploader
+  has_one_attached :avatar
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
-
-  validates :nickname, presence: true
 
   def self.guest
     find_or_create_by!(email: 'guest@email.com') do |user|
@@ -14,4 +12,6 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
     end
   end
+
+  validates :nickname, presence: true
 end
