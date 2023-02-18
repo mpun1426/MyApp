@@ -27,14 +27,14 @@
   </div>
   <div class="mb-3">
     <%= form.label :images, "スポットの画像", class: "form-label mb-0" %>
-    <span class="d-block d-sm-inline small">（最大4枚･合計5MBまで･jpeg､jpg､gif､png のみ）</span>
+    <span class="d-block d-sm-inline small">（最大4枚･2MB/枚まで･jpeg､jpg､gif､png のみ）</span>
     <%= form.file_field :images, class: "form-control mt-2", multiple: true, accept: "image/*" %>
-    <% if @spot.images.attached? %>
+    <% if @images.present? %>
       <div class="py-2">
         アップロード済みの画像<span class="d-block d-sm-inline small">（変更する場合のみファイルを選択して下さい）</span>
       </div>
       <div class="d-flex">
-        <% @spot.images.each do |image| %>
+        <% @images.each do |image| %>
           <div class="w-25">
             <%= image_tag image.variant(resize: "800x600", gravity: "center", crop: "700x520+0+0", quality: 80).processed, class: "w-75" %>
           </div>

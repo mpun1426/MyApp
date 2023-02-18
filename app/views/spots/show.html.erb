@@ -12,12 +12,12 @@
           <p class="spot-option-show mb-1 d-inline-block font11-16">♥いいね!(0)</p>
         </div>
       </div>
-      <% if @spot.images.attached? %>
+      <% if @images.present? %>
         <div class="container-fluid mb-3 px-0">
           <div class="row flex-row">
             <div id="carousel" class="carousel slide carousel-fade col-10 pe-0 pe-sm-3" data-bs-ride="carousel">
               <div class="carousel-inner">
-                <% @spot.images.each_with_index do |image, index| %>
+                <% @images.each_with_index do |image, index| %>
                   <div class="carousel-item <%= "active" if index.zero? %>" data-thumb="<%= index %>">
                     <%= image_tag image.variant(resize: "800x600", gravity: "center", crop: "700x520+0+0", quality: 80).processed, class: "w-100" %>
                   </div>
@@ -25,7 +25,7 @@
               </div>
             </div>
             <div id="thumbcarousel" class="col carousel slide d-flex flex-column justify-content-center" data-interval="false">
-              <% @spot.images.each_with_index do |image, index| %>
+              <% @images.each_with_index do |image, index| %>
                 <%= image_tag image.variant(resize: "800x600", gravity: "center", crop: "700x520+0+0", quality: 80).processed, class: "w-100 my-2", "data-bs-target": "#carousel", "data-bs-slide-to": "#{index}" %>
               <% end %>
             </div>

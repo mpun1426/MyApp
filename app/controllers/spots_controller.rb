@@ -59,7 +59,8 @@ class SpotsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_spot
-      @spot = Spot.find(params[:id])
+      @spot = Spot.eager_load(user: [:avatar_blob]).find(params[:id])
+      @images = @spot.images.eager_load(:blob)
     end
 
     # Only allow a list of trusted parameters through.
