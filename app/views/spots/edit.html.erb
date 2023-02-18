@@ -1,8 +1,13 @@
-<div class="container" data-turbolinks="false">
-  <h1>スポット編集</h1>
-
-  <%= render 'form', spot: @spot %>
-
-  <%= link_to '詳細', @spot %> |
-  <%= link_to '戻る', spots_path %>
+<div class="py-3 bg-light">
+  <div class="container" data-turbolinks="false">
+    <div class="row justify-content-center py-4">
+      <div class="col-md-9 p-3" data-turbolinks="false">
+        <h2 class="wrapping-signup">スポット編集</h2>
+        <%= render 'form', spot: @spot %>
+        <div class="py-3">
+          <%= link_to "戻る", @spot, class: "btn btn-dark widebutton" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

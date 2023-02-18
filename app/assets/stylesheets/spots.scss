@@ -3,8 +3,8 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .spot-describe {
-  overflow: scroll;
-  height: 55px;
+  overflow: auto;
+  max-height: 55px;
 }
 
 .spot-thumb {
@@ -44,6 +44,11 @@
   font-size: 14px;
   color: #000000;
   text-decoration: none;
+}
+
+.spotavatar {
+  max-height: 50px;
+  border-radius: 50%;
 }
 
 .overhidden {
