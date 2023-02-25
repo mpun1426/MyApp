@@ -12,12 +12,12 @@
           <p class="spot-option-show mb-1 d-inline-block font11-16">♥いいね!(0)</p>
         </div>
       </div>
-      <% if @images.present? %>
+      <% if @spot.images.attached? %>
         <div class="container-fluid mb-3 px-0">
           <div class="row flex-row">
             <div id="carousel" class="carousel slide carousel-fade col-10 pe-0 pe-sm-3" data-bs-ride="carousel">
               <div class="carousel-inner">
-                <% @images.each_with_index do |image, index| %>
+                <% @spot.images.each_with_index do |image, index| %>
                   <div class="carousel-item <%= "active" if index.zero? %>" data-thumb="<%= index %>">
                     <%= image_tag image.variant(resize: "800x600", gravity: "center", crop: "700x520+0+0", quality: 80).processed, class: "w-100" %>
                   </div>
@@ -25,7 +25,7 @@
               </div>
             </div>
             <div id="thumbcarousel" class="col carousel slide d-flex flex-column justify-content-center" data-interval="false">
-              <% @images.each_with_index do |image, index| %>
+              <% @spot.images.each_with_index do |image, index| %>
                 <%= image_tag image.variant(resize: "800x600", gravity: "center", crop: "700x520+0+0", quality: 80).processed, class: "w-100 my-2", "data-bs-target": "#carousel", "data-bs-slide-to": "#{index}" %>
               <% end %>
             </div>
@@ -41,7 +41,7 @@
                 <span class="font12-17"><%= @spot.address %></span>
               </div>
               <div class="col-2 d-flex justify-content-end pb-3 border-bottom">
-                <% if @spot.user.avatar.attached? %>
+                <% if @spot.user.avatar.present? %>
                   <%= image_tag @spot.user.avatar.variant(resize: "200x200", gravity: "center", crop: "200x200+0+0", quality: 70).processed, class: "spotavatar" %>
                 <% else %>
                   <%= image_tag 'sampleavatar.jpeg', class: "spotavatar" %>
@@ -78,9 +78,6 @@
           </div>
         </div>
       </div>
-
-      <%= link_to '編集', edit_spot_path(@spot) %> |
-      <%= link_to '戻る', spots_path %>
     </div>
   </div>
 </div>
