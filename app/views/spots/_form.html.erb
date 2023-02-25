@@ -1,10 +1,10 @@
 <%= form_with(model: spot) do |form| %>
   <% if spot.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(spot.errors.count, "件") %>のエラーが発生しました</h2>
+      <span class="font18-26"><%= pluralize(spot.errors.count, "件") %>のエラーが発生しました</span>
       <ul>
         <% spot.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li class="font11-16"><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
@@ -26,17 +26,20 @@
     <%= form.text_area :describe, class: "form-control", rows: "5", placeholder: "詳細な紹介文など自由に記入できます" %>
   </div>
   <div class="mb-3">
-    <%= form.label :images, "スポットの画像", class: "form-label mb-0" %>
-    <span class="d-block d-sm-inline small">（最大4枚･2MB/枚まで･jpeg､jpg､gif､png のみ）</span>
+    <%= form.label :images, "スポットの画像", class: "form-label mb-0" %><span class="d-block d-sm-inline small">（最大4枚･2MB/枚まで･jpeg､jpg､gif､png のみ）</span>
     <%= form.file_field :images, class: "form-control mt-2", multiple: true, accept: "image/*" %>
-    <% if @images.present? %>
+    <% if @spot.images.attached? %>
       <div class="py-2">
         アップロード済みの画像<span class="d-block d-sm-inline small">（変更する場合のみファイルを選択して下さい）</span>
       </div>
       <div class="d-flex">
-        <% @images.each do |image| %>
+        <% @spot.images.each do |image| %>
           <div class="w-25">
-            <%= image_tag image.variant(resize: "800x600", gravity: "center", crop: "700x520+0+0", quality: 80).processed, class: "w-75" %>
+            <% begin %>
+              <%= image_tag image.variant(resize: "800x600", gravity: "center", crop: "700x520+0+0", quality: 80).processed, class: "w-75" %>
+            <% rescue %>
+              <span class="font11-16">[エラー画像]</span>
+            <% end %>
           </div>
         <% end %>
       </div>

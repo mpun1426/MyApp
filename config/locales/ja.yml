@@ -6,6 +6,7 @@ ja:
       spot:
         name: スポット名
         address: 所在地
+        images: 画像
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
