@@ -15,7 +15,7 @@
         </span>
         <ul class="dropdown-menu font-m-400">
           <% if user_signed_in? %>
-            <li><%= link_to "スポットを編集", '#', class: "dropdown-item" %></li>
+            <li><%= link_to "スポットを編集", spot_edit_select_path, class: "dropdown-item" %></li>
             <li><%= link_to "スポットを投稿", new_spot_path, class: "dropdown-item" %></li>
             <li><hr class="dropdown-divider"></li>
           <% end %>

@@ -32,7 +32,7 @@
                 <li><%= link_to "アカウント設定", edit_user_registration_path, class: "dropdown-item" %></li>
                 <li><%= link_to "おすすめスポット一覧", spots_path, class: "dropdown-item" %></li>
                 <li><%= link_to "おすすめスポット新規投稿", new_spot_path, class: "dropdown-item" %></li>
-                <li><%= link_to "投稿したスポットの編集", '#', class: "dropdown-item" %></li>
+                <li><%= link_to "投稿したスポットの編集", spot_edit_select_path, class: "dropdown-item" %></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item nondeco" %></li>
               </ul>
