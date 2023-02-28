@@ -1,11 +1,16 @@
 class SpotsController < ApplicationController
   before_action :set_spot, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
 
   def index
     @spots = Spot.with_attached_images
   end
 
   def show
+    @comments = @spot.comments.eager_load(:user)
+    if current_user.present?
+      @comment = current_user.comments.new
+    end
   end
 
   def new

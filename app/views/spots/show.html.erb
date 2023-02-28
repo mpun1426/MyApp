@@ -8,7 +8,7 @@
           <p class="spot-address-show mb-0 d-inline-block font11-16"><%= @spot.address %></p>
         </div>
         <div class="col-6 d-flex justify-content-end">
-          <p class="spot-option-show mb-1 me-2 d-inline-block font11-16">コメント(0)</p>
+          <p class="spot-option-show mb-1 me-2 d-inline-block font11-16">コメント(<%= @comments.length %>)</p>
           <p class="spot-option-show mb-1 d-inline-block font11-16">♥いいね!(0)</p>
         </div>
       </div>
@@ -34,7 +34,7 @@
       <% end %>
       <div class="container-fluid px-0">
         <div class="row gx-0">
-          <div class="col-md-8 pe-md-3">
+          <div class="col-lg-8 pe-lg-3">
             <div class="row gx-0">
               <div class="col-10 pe-0 pb-3 border-bottom">
                 <p class="font-m-500 mb-0 font15-24"><%= @spot.user.nickname %>さんのおすすめスポット</p>
@@ -47,7 +47,7 @@
                   <%= image_tag 'sampleavatar.jpeg', class: "spotavatar" %>
                 <% end %>
               </div>
-              <div class="col-12 border-bottom pt-3 pb-4 font12-17 minh100">
+              <div class="col-12 border-bottom pt-3 pb-4 font12-17">
                 <span class="font-m-500">スポットの特徴<br>
                   <% if @spot.feature.present? %>
                     <%= @spot.feature %>
@@ -67,17 +67,56 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 mt-4 mt-md-3 ps-md-3">
-            コメント(0)<br>
-            <div class="col border my-3">aa<br>bb</div>
-            <div class="col border my-3">aa<br>bb</div>
-            <div class="col border my-3">aa<br>bb</div>
-            <div class="col border my-3">aa<br>bb</div>
-            <div class="col border my-3">aa<br>bb</div>
-            <div class="col border my-3">aa<br>bb</div>
+          <div class="col-lg-4 mt-4 mt-lg-3 ps-lg-3">
+            <% if current_user.present? %>
+              <div class="d-flex justify-content-between mb-3 font14-16">
+                <div>コメント(<%= @comments.length %>)</div>
+                <div class="me-2"><span class="pointer" data-bs-toggle="modal" data-bs-target="#commentModal"><u>コメントする</u></span></div>
+              </div>
+            <% else %>
+              <div class="font14-16">コメント(<%= @comments.length %>)</div>
+              <div class="ms-1 mb-2 font12">コメントする場合はログインが必要です。</div>
+            <% end %>
+            <% if @comments.present? %>
+              <% @comments.each do |comment| %>
+                <div class="col border mb-3 px-2">
+                  <span class="font14"><%= comment.user.nickname %>さんのコメント</span>
+                  <div class="font14-16"><%= comment.content %></div>
+                  <span class="font14">コメント日時: <%= l comment.created_at %></span>
+                </div>
+              <% end %>
+            <% else %>
+              <div class="col border my-3 p-2">
+                <span class="font14">まだコメントが投稿されていません</span>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="commentModalLabel">コメントを投稿する</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <% if current_user.present? %>
+        <%= form_with(model: [@spot, @comment], method: :post) do |f| %>
+          <div class="modal-body">
+            <div class="mb-3">
+              <%= f.text_area :content, class: "form-control minh150", placeholder: "コメントを入力して下さい", required: true %>
+              <%= f.hidden_field :spot_id, value: @spot.id %>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-secondary me-4" data-bs-dismiss="modal">キャンセル</button>
+            <%= f.submit "投稿する", class: "btn btn-dark ms-4" %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
