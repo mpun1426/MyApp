@@ -78,13 +78,14 @@
               <div class="ms-1 mb-2 font12">コメントする場合はログインが必要です。</div>
             <% end %>
             <% if @comments.present? %>
-              <% @comments.each do |comment| %>
+              <% @comments.first(3).each do |comment| %>
                 <div class="col border mb-3 px-2">
                   <span class="font14"><%= comment.user.nickname %>さんのコメント</span>
                   <div class="font14-16"><%= comment.content %></div>
                   <span class="font14">コメント日時: <%= l comment.created_at %></span>
                 </div>
               <% end %>
+              <div class="font14 text-end pe-1 mt--07"><%= link_to "全てのコメントを見る", '#' if @comments.length > 3 %></div>
             <% else %>
               <div class="col border my-3 p-2">
                 <span class="font14">まだコメントが投稿されていません</span>
