@@ -7,7 +7,7 @@ class SpotsController < ApplicationController
   end
 
   def show
-    @comments = @spot.comments.eager_load(:user)
+    @comments = @spot.comments.eager_load(:user).order(created_at: :desc)
     if current_user.present?
       @comment = current_user.comments.new
     end
