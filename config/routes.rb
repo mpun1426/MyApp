@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   root 'top#index'
-  resources :top, only: [:index]
-  resources :spots do
-    resources :comments, only: [:create]
-  end
   get 'spot_edit_select', to: 'spots#edit_select'
   get 'users/account'
+  resources :top, only: [:index]
+  resources :spots do
+    resources :comments, only: [:index, :create]
+  end
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }

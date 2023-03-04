@@ -21,3 +21,17 @@
 .mt--07 {
   margin-top: -0.7em;
 }
+
+.width68 {
+  width: 68%;
+}
+
+.nowrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.max100 {
+  max-width: 100px;
+}

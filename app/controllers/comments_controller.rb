@@ -1,4 +1,9 @@
 class CommentsController < ApplicationController
+  def index
+    @spot = Spot.with_attached_images.find(params[:spot_id])
+    @comments = @spot.comments.eager_load(:user).all.order(created_at: :desc)
+  end
+
   def create
     @comment = current_user.comments.new(comment_params)
     if @comment.save
