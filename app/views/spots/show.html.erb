@@ -8,8 +8,20 @@
           <p class="spot-address-show mb-0 d-inline-block font11-16"><%= @spot.address %></p>
         </div>
         <div class="col-6 d-flex justify-content-end">
-          <p class="spot-option-show mb-1 me-2 d-inline-block font11-16">コメント(<%= @comments.length %>)</p>
-          <p class="spot-option-show mb-1 d-inline-block font11-16">♥いいね!(0)</p>
+          <p class="spot-option-show mb-1 me-2 d-inline-block font11-16">コメント&nbsp;(<%= @comments.length %>)</p>
+          <% if current_user.present? %>
+            <% if @spot.liked?(current_user) %>
+              <p class="spot-option-show mb-1 d-inline-block font11-16">
+                <%= link_to "♥いいね (#{ @spot.likes.length })", spot_likes_path(@spot), method: :delete, class: "text-black nondeco" %>
+              </p>
+            <% else %>
+              <p class="spot-option-show mb-1 d-inline-block font11-16">
+                <%= link_to "♡いいね (#{ @spot.likes.length })", spot_likes_path(@spot), method: :post, class: "text-black nondeco" %>
+              </p>
+            <% end %>
+          <% else %>
+            <p class="spot-option-show mb-1 d-inline-block font11-16">♡<u>いいね (<%= @spot.likes.length %>)</u></p>
+          <% end %>
         </div>
       </div>
       <% if @spot.images.attached? %>
@@ -70,11 +82,11 @@
           <div class="col-lg-4 mt-lg-3 ps-lg-3">
             <% if current_user.present? %>
               <div class="d-flex justify-content-between mb-3 font14-16">
-                <div>コメント(<%= @comments.length %>)</div>
+                <div>コメント&nbsp;(<%= @comments.length %>)</div>
                 <div class="me-2"><span class="pointer" data-bs-toggle="modal" data-bs-target="#commentModal"><u>コメントする</u></span></div>
               </div>
             <% else %>
-              <div class="font14-16">コメント(<%= @comments.length %>)</div>
+              <div class="font14-16">コメント&nbsp;(<%= @comments.length %>)</div>
               <div class="ms-1 mb-2 font12">コメントする場合はログインが必要です。</div>
             <% end %>
             <% if @comments.present? %>
@@ -93,8 +105,19 @@
             <% end %>
           </div>
         </div>
+        <div class="row gx-0">
+          <div class="col-lg-8 pe-lg-3 d-flex justify-content-between font14-16">
+            <%= link_to "スポット一覧に戻る", spots_path, class: "d-block text-black" %>
+            <% if current_user.present? %>
+              <% if @spot.liked?(current_user) %>
+                <%= link_to "いいねを消す", spot_likes_path(@spot), method: :delete, class: "d-block text-black" %>
+              <% else %>
+                <%= link_to "いいねする", spot_likes_path(@spot), method: :post, class: "d-block text-black" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
-      <%= link_to "スポット一覧に戻る", spots_path, class: "d-block text-black" %>
     </div>
   </div>
 </div>

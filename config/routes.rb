@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :top, only: [:index]
   resources :spots do
     resources :comments, only: [:index, :create]
+    resource :likes, only: [:create, :destroy]
   end
   devise_for :users, controllers: {
     registrations: 'users/registrations'
