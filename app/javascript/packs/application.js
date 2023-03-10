@@ -16,4 +16,5 @@ ActiveStorage.start()
 
 $(function(){
   setTimeout("$('.alert').fadeOut('fast')", 2500);
+  $('[data-bs-toggle="tooltip"]').tooltip();
 });
