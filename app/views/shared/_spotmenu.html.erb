@@ -1,28 +1,40 @@
 <div class="container-fluid text-center pt-2 pb-1 pb-md-2 spotmenu-shadow">
   <div class="row" data-turbolinks="false">
     <div class="col">
-      <div class="pb-sm-1"><%= image_tag 'kyoto.jpeg', size: '30x30' %></div>
-      <span class="font11-16">東京</span>
+      <%= link_to ({controller: "spots", action: "index", q: {address_cont:'東京'}}), class: "spotmenu-link nondeco text-black hoveropacity" do %>
+        <div class="pb-sm-1"><%= image_tag 'tokyo.jpeg', size: '30x30' %></div>
+        <span class="font11-16">東京</span>
+      <% end %>
     </div>
     <div class="col">
-      <div class="pb-sm-1"><%= image_tag 'kyoto.jpeg', size: '30x30' %></div>
-      <span class="font11-16">大阪</span>
+      <%= link_to ({controller: "spots", action: "index", q: {address_cont:'大阪'}}), class: "spotmenu-link nondeco text-black hoveropacity" do %>
+        <div class="pb-sm-1"><%= image_tag 'osaka.jpeg', size: '30x30' %></div>
+        <span class="font11-16">大阪</span>
+      <% end %>
     </div>
     <div class="col">
-      <div class="pb-sm-1"><%= image_tag 'kyoto.jpeg', size: '30x30' %></div>
-      <span class="font11-16">京都</span>
+      <%= link_to ({controller: "spots", action: "index", q: {address_cont:'京都'}}), class: "spotmenu-link nondeco text-black hoveropacity" do %>
+        <div class="pb-sm-1"><%= image_tag 'kyoto.jpeg', size: '30x30' %></div>
+        <span class="font11-16">京都</span>
+      <% end %>
     </div>
     <div class="col">
-      <div class="pb-sm-1"><%= image_tag 'kyoto.jpeg', size: '30x30' %></div>
-      <span class="font11-16">大分</span>
+      <%= link_to ({controller: "spots", action: "index", q: {address_cont:'広島'}}), class: "spotmenu-link nondeco text-black hoveropacity" do %>
+        <div class="pb-sm-1"><%= image_tag 'hiroshima.jpeg', size: '30x30' %></div>
+        <span class="font11-16">広島</span>
+      <% end %>
     </div>
     <div class="col">
-      <div class="pb-sm-1"><%= image_tag 'kyoto.jpeg', size: '30x30' %></div>
-      <span class="font11-16">広島</span>
+      <%= link_to ({controller: "spots", action: "index", q: {address_cont:'愛媛'}}), class: "spotmenu-link nondeco text-black hoveropacity" do %>
+        <div class="pb-sm-1"><%= image_tag 'ehime.jpeg', size: '30x30' %></div>
+        <span class="font11-16">愛媛</span>
+      <% end %>
     </div>
     <div class="col">
-      <div class="pb-sm-1"><%= image_tag 'kyoto.jpeg', size: '30x30' %></div>
-      <span class="font11-16">愛媛</span>
+      <%= link_to ({controller: "spots", action: "index", q: {address_cont:'大分'}}), class: "spotmenu-link nondeco text-black hoveropacity" do %>
+        <div class="pb-sm-1"><%= image_tag 'oita.jpeg', size: '30x30' %></div>
+        <span class="font11-16">大分</span>
+      <% end %>
     </div>
   </div>
 </div>

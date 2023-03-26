@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.spotmenu-link {
+  display: inline-block;
+  max-width: 100px;
+}
+
 .spot-describe {
   overflow: auto;
   max-height: 55px;
