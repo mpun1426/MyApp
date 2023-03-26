@@ -10,12 +10,6 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-      <div class="col d-none">
-        <form class="d-flex homeform">
-          <input class="form-control searchform" type="search" placeholder="フリーワード検索" aria-label="Search">
-          <button class="btn btn-dark searchbutton" type="submit">検索</button>
-        </form>
-      </div>
       <div class="col">
         <%= search_form_for @q, class: "d-flex homeform" do |f| %>
           <%= f.search_field :name_or_address_or_feature_or_describe_cont, class: "form-control searchform", placeholder: "フリーワード検索" %>
