@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get 'users/account'
   resources :top, only: [:index]
   resources :spots do
+    collection do
+      get 'search'
+    end
     resources :comments, only: [:index, :create]
     resource :likes, only: [:create, :destroy]
   end

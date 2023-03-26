@@ -4,6 +4,7 @@ class SpotsController < ApplicationController
 
   def index
     @spots = Spot.with_attached_images
+    @spots = @q.result
   end
 
   def show
