@@ -1,20 +1,39 @@
 <%= render 'shared/spotmenu' %>
 <div class="container-fluid" data-turbolinks="false">
   <div class="row my-3 mx-2">
-    <% @spots.each do |spot| %>
-      <div class="col-12 col-md-6 col-lg-4 col-xl-3 p-3 p-md-4 d-flex justify-content-center">
-        <%= link_to spot, class: "nondeco overhidden" do %>
-          <div class="card w-100 nonebutton">
-            <% if spot.images.attached? %>
-              <%= image_tag spot.images.first.variant(resize: "800x600!", gravity: "center", crop: "690x430+0+0", quality: 70).processed, class: "card-img-top spot-thumb" %>
-            <% else %>
-              <%= image_tag 'sample.jpg', class: "card-img-top spot-thumb", alt: "Spot photo" %>
-            <% end%>
-            <div class="card-body px-1 py-2">
-              <h5 class="card-title spot-text-main font-m-500 mb-1"><%= spot.name %></h5>
-              <p class="card-text spot-address font-m-400 mb-1"><%= spot.address %></p>
-              <p class="card-text spot-describe spot-text-sub font-m-400 lh-sm pe-3 pb-1"><%= spot.describe %></p>
+    <% if @spots.presence %>
+      <% @spots.each do |spot| %>
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 p-3 p-md-4 d-flex justify-content-center">
+          <%= link_to spot, class: "nondeco overhidden" do %>
+            <div class="card w-100 nonebutton">
+              <% if spot.images.attached? %>
+                <%= image_tag spot.images.first.variant(resize: "800x600!", gravity: "center", crop: "690x430+0+0", quality: 70).processed, class: "card-img-top spot-thumb" %>
+              <% else %>
+                <%= image_tag 'sample.jpg', class: "card-img-top spot-thumb", alt: "Spot photo" %>
+              <% end%>
+              <div class="card-body px-1 py-2">
+                <h5 class="card-title spot-text-main font-m-500 mb-1"><%= spot.name %></h5>
+                <p class="card-text spot-address font-m-400 mb-1"><%= spot.address %></p>
+                <p class="card-text spot-describe spot-text-sub font-m-400 lh-sm pe-3 pb-1"><%= spot.describe %></p>
+              </div>
             </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="pt-3 text-center ps-md-5 pt-md-4 text-md-start font-m-700">
+        <div class="font18-26">まだスポットの投稿がありません</div>
+        <% if user_signed_in? %>
+          <div class="my-3"><%= link_to "スポットを投稿してみませんか？", new_spot_path, class: "text-black font-m-500" %></div>
+        <% else %>
+          <div class="my-3">
+            <span class="font-m-500">スポットを投稿してみませんか？</span><br>
+            <span class="font12 font-m-500">
+              <%= link_to "ログイン", new_user_session_path, class: "text-black" %>
+              または
+              <%= link_to "ユーザー登録", new_user_registration_path, class: "text-black"%>
+              が必要です
+            </span>
           </div>
         <% end %>
       </div>
