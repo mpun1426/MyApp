@@ -18,8 +18,11 @@
             <li><%= link_to "スポットを編集", spot_edit_select_path, class: "dropdown-item" %></li>
             <li><%= link_to "スポットを投稿", new_spot_path, class: "dropdown-item" %></li>
             <li><hr class="dropdown-divider"></li>
+            <li><%= link_to "いいね！一覧へ", users_likes_path, class: "dropdown-item" %></li>
+            <li><%= link_to "スポット一覧へ", spots_path, class: "dropdown-item" %></li>
+          <% else %>
+            <li><%= link_to "スポット一覧へ", spots_path, class: "dropdown-item" %></li>
           <% end %>
-          <li><%= link_to "スポット一覧へ", spots_path, class: "dropdown-item" %></li>
         </ul>
       </div>
     </div>
