@@ -2,20 +2,20 @@
   <div class="row gx-0" data-turbolinks="false">
     <ul class="nav justify-content-center py-4 text-center lh-1" style="background-color: #DFDFDD;">
       <li class="nav-item col-12 col-md-auto mx-auto">
-        <%= link_to "利用規約", '#', class: "nav-link text-body normallink" %>
+        <%= link_to "利用規約", term_path, class: "nav-link text-body normallink" %>
       </li>
-      <li class="nav-item col-12 col-md-auto mx-auto">
+      <!-- <li class="nav-item col-12 col-md-auto mx-auto">
         <a class="nav-link text-body normallink" href="#">サイトマップ</a>
       </li>
       <li class="nav-item col-12 col-md-auto mx-auto">
         <a class="nav-link text-body normallink" href="#">お問い合わせ</a>
-      </li>
+      </li> -->
       <li class="nav-item col-12 col-md-auto mx-auto">
-        <a class="nav-link text-body normallink" href="#">プライバシーポリシー</a>
+        <%= link_to "プライバシーポリシー", privacy_path, class: "nav-link text-body normallink" %>
       </li>
     </ul>
     <div class="p-4 bg-black text-center">
-      <p class="small" style="color: #C09565;">&copy; 2022-<%= Time.current.year %> Copyright Shareco inc.</p>
+      <p class="small" style="color: #C09565;">&copy; 2022-<%= Time.current.year %> Copyright ItteMiyo inc.</p>
     </div>
   </div>
 </div>
