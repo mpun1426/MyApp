@@ -177,3 +177,12 @@
 .fs10 {
   font-size: 10px;
 }
+
+.termlist h4 {
+  margin-top: 1.5rem;
+
+}
+
+.termlist p,ol {
+  font-size: clamp(11px, 2.5vw, 14px);
+}

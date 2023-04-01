@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'top#index'
+  get 'term', to: 'top#term'
+  get 'privacy', to: 'top#privacy'
   get 'spot_edit_select', to: 'spots#edit_select'
   get 'users/account'
   resources :top, only: [:index]
