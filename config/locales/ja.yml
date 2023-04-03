@@ -1,12 +1,23 @@
 ja:
   activerecord:
     models:
+      user: ユーザー
       spot: スポット
+      like: いいね
+      comment: コメント
     attributes:
+      user:
+        name: ユーザー名
+        email: メールアドレス
+        avatar: アバター
       spot:
         name: スポット名
         address: 所在地
+        feature: スポットの特徴
+        describe: スポットの詳細説明
         images: 画像
+      comment:
+        content: 本文
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

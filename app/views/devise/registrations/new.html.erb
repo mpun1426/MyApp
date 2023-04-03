@@ -30,7 +30,7 @@
           </div>
           <div class="mb-3 mx-auto max600">
             <%= f.label :avatar, "アバター", for: "formFile", class: "form-label" %><span class="small"> (jpg, jpeg, gif, png )</span>
-            <%= f.file_field :avatar, id: "formFile", class: "form-control" %>
+            <%= f.file_field :avatar, id: "formFile", class: "form-control", accept: "image/*" %>
           </div>
           <div class="py-2 mx-auto max600">
             <%= f.submit "ユーザーを登録する", class: "btn btn-dark widebutton" %>

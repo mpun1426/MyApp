@@ -17,7 +17,7 @@
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <div class="mb-3 mx-auto max600">
             <%= f.label :avatar, "アバターを更新する場合はファイルを選択", for: "formFile", class: "form-label" %><span class="small"> (jpg, jpeg, gif, png )</span>
-            <%= f.file_field :avatar, id: "formFile", class: "form-control" %>
+            <%= f.file_field :avatar, id: "formFile", class: "form-control", accept: "image/*" %>
           </div>
           <div class="form-floating mb-3 mx-auto max600">
             <%= f.text_field :nickname, id: "floatingNickname", class: "form-control", placeholder: "ニックネーム", required: true %>
