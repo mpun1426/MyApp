@@ -1,8 +1,16 @@
-# README
+# [メインロゴ](./app/assets/images/banner.png)
 
-MyApp
+# ItteMiyo
 
-* Ruby version
+## サービスの概要
+**誰もが知る有名スポットから知る人ぞ知るコアなスポットまで**
+**おすすめ観光スポットを共有しあおう！そして行ってみよう！**
+
+## サービス名(ItteMiyo)の由来
+*ItteMiyo(行ってみぃよ)：おすすめするから行ってごらん！*
+*ItteMiyo(行ってみよう)：おすすめスポットに行ってみよう！*
+
+* Rubyバージョン
   2.7.3
 
 * System dependencies
