@@ -1,9 +1,9 @@
-# ![メインロゴ](./app/assets/images/banner.png)
+# <img src="./app/assets/images/banner.png" width="300px">
 
-# ItteMiyo
+**URL：** [http://localhost:3000/](http://localhost:3000/)
 
 ## サービスの概要
-**誰もが知る有名スポットから知る人ぞ知るコアなスポットまで**  
+**誰もが知る有名スポットから知る人ぞ知るコアなスポットまで**<br>
 **おすすめ観光スポットを共有しあおう！そして行ってみよう！**
 
 ## サービス名(ItteMiyo)の由来
