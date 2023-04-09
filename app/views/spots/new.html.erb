@@ -1,13 +1,17 @@
 <div class="py-3 bg-light">
   <div class="container" data-turbolinks="false">
     <div class="row justify-content-center py-4">
-      <div class="col-md-9 p-3" data-turbolinks="false">
-        <h2 class="wrapping-signup">スポット投稿</h2>
-        <%= render 'form', spot: @spot %>
-        <div class="py-3">
-          <%= link_to "戻る", :back, class: "btn btn-dark widebutton" %>
+      <% if current_user.presence %>
+        <div class="col-md-9 p-3" data-turbolinks="false">
+          <h2 class="wrapping-signup">スポット投稿</h2>
+          <%= render 'form', spot: @spot %>
+          <div class="py-3">
+            <%= link_to "戻る", :back, class: "btn btn-dark widebutton" %>
+          </div>
         </div>
-      </div>
+      <% else %>
+        <%= render 'shared/nologin' %>
+      <% end %>
     </div>
   </div>
 </div>

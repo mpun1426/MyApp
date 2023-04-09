@@ -1,7 +1,6 @@
 class SpotsController < ApplicationController
   before_action :set_spot, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:create, :update, :destroy]
-  protect_from_forgery except: :create
 
   def index
     @spots = Spot.with_attached_images

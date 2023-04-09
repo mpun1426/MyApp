@@ -3,11 +3,9 @@ require 'rails_helper'
 RSpec.describe "/spots", type: :request do
   let(:user) { create(:user) }
   let(:spot) { create(:spot) }
-  let(:current_user_created_spot) { create(:spot, user_id: user.id)}
-  let(:spot_valid_params) { {spot: attributes_for(:spot, user_id: user.id)} }
-  let(:spot_invalid_params) { {spot: attributes_for(:spot, name: "", address: "", user_id: user.id)} }
-  let(:valid_attributes) { skip("Add a hash of attributes valid for your model") }
-  let(:invalid_attributes) { skip("Add a hash of attributes invalid for your model") }
+  let!(:current_user_created_spot) { create(:spot, user_id: user.id) }
+  let(:spot_valid_params) { { spot: attributes_for(:spot, user_id: user.id) } }
+  let(:spot_invalid_params) { { spot: attributes_for(:spot, name: "", address: "", user_id: user.id) } }
 
   describe "GET スポット一覧ページ" do
     it "正常にアクセスできること" do
@@ -36,9 +34,10 @@ RSpec.describe "/spots", type: :request do
     end
 
     context "未ログインの場合" do
-      it "アクセスできないこと" do
+      it "未ログイン画面を表示すること" do
         get new_spot_path
-        expect(response).not_to have_http_status(200)
+        expect(response).to have_http_status(200)
+        expect(response.body).to include "この操作を行うにはログインが必要です"
       end
     end
   end
@@ -95,49 +94,92 @@ RSpec.describe "/spots", type: :request do
       it "バリデーションエラーとなり、新規投稿ページをレンダリングすること" do
         post spots_path, params: spot_invalid_params
         expect(response).to have_http_status(422)
-        expect(response.body).to include('スポット投稿')
+        expect(response.body).to include "スポット投稿"
       end
     end
   end
 
   describe "PATCH スポット編集" do
-    context "有効なパラメーターの場合" do
-      let(:new_attributes) { skip("Add a hash of attributes valid for your model") }
+    before do
+      sign_in user
+    end
 
-      it "正常に編集を完了すること" do
-        spot = Spot.create! valid_attributes
-        patch spot_url(spot), params: { spot: new_attributes }
+    context "有効なパラメーターの場合" do
+      before do
+        @patch_valid_name = "アフタースポット"
+        @patch_valid_address = "市町村区"
+        @patch_valid_feature = "特徴なし"
+        @patch_valid_describe = "説明なし"
+        patch spot_path(spot), params: { spot: { name: @patch_valid_name,
+                                                 address: @patch_valid_address,
+                                                 feature: @patch_valid_feature,
+                                                 describe: @patch_valid_describe,
+                                                 user_id: user.id } }
+      end
+
+      it "正常に編集を完了していること" do
         spot.reload
-        skip("Add assertions for updated state")
+        expect(spot.name).to eq @patch_valid_name
+        expect(spot.address).to eq @patch_valid_address
+        expect(spot.feature).to eq @patch_valid_feature
+        expect(spot.describe).to eq @patch_valid_describe
       end
 
       it "編集が完了したらそのスポットにリダイレクトすること" do
-        spot = Spot.create! valid_attributes
-        patch spot_url(spot), params: { spot: new_attributes }
-        spot.reload
-        expect(response).to redirect_to(spot_url(spot))
+        expect(response).to redirect_to(spot_path(spot))
       end
     end
 
     context "無効なパラメーターの場合" do
-      it "バリデーションエラーとなり、編集ページをレンダリングすること" do
-        spot = Spot.create! valid_attributes
-        patch spot_url(spot), params: { spot: invalid_attributes }
-        expect(response).to be_successful
+      before do
+        @patch_invalid_name = ""
+        @patch_invalid_address = ""
+        patch spot_path(spot), params: { spot: { name: @patch_invalid_name,
+                                                 address: @patch_invalid_address,
+                                                 user_id: user.id } }
+      end
+
+      it "バリデーションエラーとなること" do
+        expect(response).to have_http_status(422)
+      end
+
+      it "スポットが無効なパラメーターに更新されていないこと" do
+        spot.reload
+        expect(spot.name).not_to eq @patch_invalid_name
+        expect(spot.address).not_to eq @patch_invalid_address
+      end
+
+      it "編集ページをレンダリングすること" do
+        expect(response.body).to include "スポット編集"
       end
     end
   end
 
   describe "DELETE スポット削除" do
-    it "正常にスポットを削除できること" do
-      spot = Spot.create! valid_attributes
-      expect { delete spot_url(spot) }.to change(Spot, :count).by(-1)
+    before do
+      sign_in user
     end
 
-    it "スポット一覧ページにリダイレクトすること" do
-      spot = Spot.create! valid_attributes
-      delete spot_url(spot)
-      expect(response).to redirect_to(spots_url)
+    context "自分の投稿の場合" do
+      it "正常にスポットを削除できること" do
+        expect { delete spot_path(current_user_created_spot) }.to change(Spot, :count).by(-1)
+      end
+
+      it "スポット一覧ページにリダイレクトすること" do
+        delete spot_path(current_user_created_spot)
+        expect(response).to redirect_to(spots_path)
+      end
+    end
+
+    context "自分の投稿でない場合" do
+      it "スポットを削除できないこと" do
+        expect { delete spot_path(spot) }.not_to change(Spot, :count)
+      end
+
+      it "スポット一覧ページにリダイレクトすること" do
+        delete spot_path(spot)
+        expect(response).to redirect_to(spots_path)
+      end
     end
   end
 end
