@@ -110,11 +110,15 @@ RSpec.describe "/spots", type: :request do
         @patch_valid_address = "市町村区"
         @patch_valid_feature = "特徴なし"
         @patch_valid_describe = "説明なし"
-        patch spot_path(spot), params: { spot: { name: @patch_valid_name,
-                                                 address: @patch_valid_address,
-                                                 feature: @patch_valid_feature,
-                                                 describe: @patch_valid_describe,
-                                                 user_id: user.id } }
+        patch spot_path(spot), params: {
+          spot: {
+            name: @patch_valid_name,
+            address: @patch_valid_address,
+            feature: @patch_valid_feature,
+            describe: @patch_valid_describe,
+            user_id: user.id,
+          },
+        }
       end
 
       it "正常に編集を完了していること" do
@@ -134,9 +138,13 @@ RSpec.describe "/spots", type: :request do
       before do
         @patch_invalid_name = ""
         @patch_invalid_address = ""
-        patch spot_path(spot), params: { spot: { name: @patch_invalid_name,
-                                                 address: @patch_invalid_address,
-                                                 user_id: user.id } }
+        patch spot_path(spot), params: {
+          spot: {
+            name: @patch_invalid_name,
+            address: @patch_invalid_address,
+            user_id: user.id,
+          },
+        }
       end
 
       it "バリデーションエラーとなること" do
