@@ -71,7 +71,7 @@ UI/UXを重視し、スポットページでは最新のコメント3件まで�
 **フロントエンド**
 - HTML
 - SCSS
-  - bootstrap 5.2
+  - bootstrap 5.2.3
 - jQuery 3.6.3
 
 **バックエンド**
