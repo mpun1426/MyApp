@@ -6,7 +6,7 @@ RSpec.describe Like, type: :model do
   let!(:like) { create(:like, user_id: user.id, spot_id: spot.id) }
 
   context "有効な値でいいね！する場合" do
-    it "いいね！が有効であること" do
+    it "likeが有効であること" do
       expect(like).to be_valid
     end
   end
@@ -20,6 +20,12 @@ RSpec.describe Like, type: :model do
     it "spot_idが空の場合、likeが無効であること" do
       like.spot_id = ""
       expect(like).not_to be_valid
+    end
+  end
+
+  context 'スポットを削除した場合' do
+    it 'スポットのいいね！も併せて削除されること' do
+      expect { spot.destroy }.to change(Like, :count).by(-1)
     end
   end
 
