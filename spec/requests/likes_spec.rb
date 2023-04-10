@@ -8,7 +8,7 @@ RSpec.describe "Likes", type: :request do
     sign_in user
   end
 
-  describe "create Ajaxでいいね！する" do
+  describe "POST Ajaxでいいね！する" do
     it "Ajaxでいいね！できること" do
       expect do
         post spot_likes_path(spot), params: { like: { user_id: user.id, spot_id: spot.id } }, xhr: true
@@ -17,7 +17,7 @@ RSpec.describe "Likes", type: :request do
     end
   end
 
-  describe "destroy Ajaxでいいね！解除" do
+  describe "DELETE Ajaxでいいね！解除" do
     before do
       post spot_likes_path(spot), params: { like: { user_id: user.id, spot_id: spot.id } }, xhr: true
     end
