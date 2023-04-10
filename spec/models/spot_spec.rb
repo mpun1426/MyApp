@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Spot, type: :model do
   describe "spots" do
-    let(:spot) { create(:spot) }
+    let(:user) { create(:user) }
+    let!(:spot) { create(:spot, user_id: user.id) }
 
     context "有効な値でスポットを投稿する場合" do
       it "spotが有効であること" do
@@ -66,6 +67,12 @@ RSpec.describe Spot, type: :model do
         spot.images = [Rack::Test::UploadedFile.new('spec/fixtures/images/3MB.jpeg', 'image/jpeg')]
         expect(spot).not_to be_valid
         expect(spot.errors[:images]).to include "ファイルのサイズは1枚につき2MBまでです"
+      end
+    end
+
+    context 'ユーザーを削除した場合' do
+      it 'ユーザーの投稿したスポットも併せて削除されること' do
+        expect { user.destroy }.to change(Spot, :count).by(-1)
       end
     end
   end
