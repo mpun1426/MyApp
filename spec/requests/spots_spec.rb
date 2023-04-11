@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "/spots", type: :request do
+RSpec.describe "Spots", type: :request do
   let(:user) { create(:user) }
   let(:spot) { create(:spot) }
   let!(:current_user_created_spot) { create(:spot, user_id: user.id) }
