@@ -3,11 +3,11 @@ ja:
     models:
       user: ユーザー
       spot: スポット
-      like: いいね
+      like: いいね！
       comment: コメント
     attributes:
       user:
-        name: ユーザー名
+        nickname: ニックネーム
         email: メールアドレス
         avatar: アバター
       spot:
