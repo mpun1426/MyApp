@@ -5,6 +5,12 @@ class SpotsController < ApplicationController
   def index
     @spots = Spot.with_attached_images
     @spots = @q.result
+
+    if @q.name_or_address_or_feature_or_describe_cont.presence
+      @search_word = @q.name_or_address_or_feature_or_describe_cont
+    elsif @q.address_cont.presence
+      @search_address = @q.address_cont
+    end
   end
 
   def show

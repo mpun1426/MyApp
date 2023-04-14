@@ -1,3 +1,4 @@
+<%= render 'shared/page_title', page_title: @spot.name + "の全てのコメント" %>
 <div class="container">
   <div class="row" data-turbolinks="false">
     <div class="col">
@@ -16,7 +17,7 @@
       </div>
       <% if @comments.present? %>
         <% @comments.each do |comment| %>
-          <div class="col border rounded-4 mb-3 px-3 py-1">
+          <div class="col border rounded-3 mb-3 px-3 py-1">
             <span class="font14"><%= comment.user.nickname %>さんのコメント</span>
             <div class="font14-16"><%= simple_format(comment.content, class: "my-1") %></div>
             <span class="font14">コメント日時: <%= l comment.created_at %></span>

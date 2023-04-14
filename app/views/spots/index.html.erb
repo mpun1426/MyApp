@@ -1,3 +1,10 @@
+<% if @search_word.presence %>
+  <%= render 'shared/page_title', page_title: @search_word + "の検索結果" %>
+<% elsif @search_address.presence %>
+  <%= render 'shared/page_title', page_title: @search_address + "のスポット一覧" %>
+<% else %>
+  <%= render 'shared/page_title', page_title: "スポット一覧" %>
+<% end %>
 <%= render 'shared/spotmenu' %>
 <div class="container-fluid" data-turbolinks="false">
   <div class="row my-3 mx-2">
