@@ -18,16 +18,24 @@ RSpec.describe "Layouts", type: :system do
     describe "フリーワード検索" do
       before do
         visit root_path
-        fill_in 'q[name_or_address_or_feature_or_describe_cont]', with: spot1.name
-        click_button "検索"
       end
 
       it "ワード検索したスポットが表示されていること" do
+        fill_in 'q[name_or_address_or_feature_or_describe_cont]', with: spot1.name
+        click_button "検索"
         expect(page).to have_content spot1.name
       end
 
       it "ワード検索していないスポットは表示されていないこと" do
+        fill_in 'q[name_or_address_or_feature_or_describe_cont]', with: spot1.name
+        click_button "検索"
         expect(page).not_to have_content spot2.name
+      end
+
+      it "ワード検索したスポットが未投稿の場合は、その旨のページを表示すること" do
+        fill_in 'q[name_or_address_or_feature_or_describe_cont]', with: "未投稿スポット"
+        click_button "検索"
+        expect(page).to have_content "まだスポットの投稿がありません"
       end
     end
 
@@ -103,7 +111,13 @@ RSpec.describe "Layouts", type: :system do
     end
 
     it "所在地がクリックした地名でないスポットは表示しないこと" do
+      find("a.spotmenu-link", text: "東京").click
       expect(page).not_to have_content spot2.name # 所在地が大阪のスポット
+    end
+
+    it "クリックした地名のスポットが未投稿の場合は、その旨のページを表示すること" do
+      find("a.spotmenu-link", text: "愛媛").click
+      expect(page).to have_content "まだスポットの投稿がありません"
     end
   end
 
@@ -137,10 +151,12 @@ RSpec.describe "Layouts", type: :system do
   end
 
   describe "モバイルメニュー" do
-    it "「トップページ」のロゴリンク押下でトップページに遷移すること" do
-      visit spots_path
-      find("div.col a", text: "トップページ").click
-      expect(current_path).to eq root_path
+    context "未ログイン・ログイン済共通項目" do
+      it "「トップページ」のロゴリンク押下でトップページに遷移すること" do
+        visit spots_path
+        find("div.col a", text: "トップページ").click
+        expect(current_path).to eq root_path
+      end
     end
 
     context "未ログインの場合" do
