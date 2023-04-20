@@ -2,9 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Comments", type: :system do
   let(:user) { create(:user) }
-  let(:spot) { create(:spot, name: "コメントしたスポット") }
-  # let!(:spot) { create(:spot, name: "他のスポット") }
-  # let!(:comment) { create(:comment, user_id: user.id, spot_id: spot.id) }
+  let(:spot) { create(:spot) }
 
   describe "スポット詳細ページのコメント機能" do
     context "ログイン済の場合" do
