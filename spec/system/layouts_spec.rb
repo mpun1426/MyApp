@@ -115,9 +115,50 @@ RSpec.describe "Layouts", type: :system do
       expect(page).not_to have_content spot2.name # 所在地が大阪のスポット
     end
 
-    it "クリックした地名のスポットが未投稿の場合は、その旨のページを表示すること" do
-      find("a.spotmenu-link", text: "愛媛").click
-      expect(page).to have_content "まだスポットの投稿がありません"
+    context "クリックした地名のスポットが未投稿の場合" do
+      it "まだ投稿されていない旨の表示をすること" do
+        find("a.spotmenu-link", text: "愛媛").click
+        expect(page).to have_content "まだスポットの投稿がありません"
+      end
+
+      context "ログイン済の場合" do
+        before do
+          visit new_user_session_path
+          click_link "ゲストログイン"
+          find("a.spotmenu-link", text: "愛媛").click
+        end
+
+        it "スポット投稿を促進するリンクを表示すること" do
+          expect(page).to have_link "スポットを投稿してみませんか？"
+        end
+
+        it "スポットを投稿するリンクを押下でスポット新規投稿ページに遷移すること" do
+          click_link "スポットを投稿してみませんか？"
+          expect(current_path).to eq new_spot_path
+        end
+      end
+
+      context "未ログインの場合" do
+        before do
+          find("a.spotmenu-link", text: "愛媛").click
+        end
+
+        it "スポット投稿を促進するメッセージを表示すること" do
+          expect(page).to have_content "スポットを投稿してみませんか？"
+        end
+
+        it "投稿するにはログインまたはユーザー登録が必要な旨の表示をすること" do
+          expect(page).to have_content "ログイン または ユーザー登録 が必要です"
+        end
+
+        it "投稿促進メッセージ付近にログインのリンクを表示すること" do
+          expect(page).to have_link "ログイン", href: new_user_session_path
+        end
+
+        it "投稿促進メッセージ付近にユーザー登録のリンクを表示すること" do
+          expect(page).to have_link "ユーザー登録", href: new_user_registration_path
+        end
+      end
     end
   end
 
