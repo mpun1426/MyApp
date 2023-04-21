@@ -20,7 +20,7 @@ RSpec.describe "Comments", type: :system do
 
       it "コメントを投稿できること" do
         find("div.me-2 span.pointer", text: "コメントする").click
-        fill_in "comment[content]", with: "コメントします"
+        fill_in 'comment[content]', with: "コメントします"
         click_button "投稿する"
         expect(page).to have_content "コメントします"
       end
@@ -28,7 +28,7 @@ RSpec.describe "Comments", type: :system do
       context "1件(3件以下)コメントを投稿した場合" do
         before do
           find("div.me-2 span.pointer", text: "コメントする").click
-          fill_in "comment[content]", with: "1件のテストコメント"
+          fill_in 'comment[content]', with: "1件のテストコメント"
           click_button "投稿する"
         end
 
@@ -53,7 +53,7 @@ RSpec.describe "Comments", type: :system do
         before do
           4.times do
             find("div.me-2 span.pointer", text: "コメントする").click
-            fill_in "comment[content]", with: "4件のテストコメント"
+            fill_in 'comment[content]', with: "4件のテストコメント"
             click_button "投稿する"
           end
         end

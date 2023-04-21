@@ -18,7 +18,7 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
     end
 
-    it 'password(パスワード)が6文字以上の場合、userが有効であること' do
+    it "password(パスワード)が6文字以上の場合、userが有効であること" do
       user.password = user.password_confirmation = "n" * 6
       expect(user).to be_valid
     end
@@ -45,12 +45,12 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_valid
     end
 
-    it 'password(パスワード)が未入力の場合、userが無効であること' do
+    it "password(パスワード)が未入力の場合、userが無効であること" do
       user.password = user.password_confirmation = ""
       expect(user).not_to be_valid
     end
 
-    it 'password(パスワード)が6文字未満の場合、userが無効であること' do
+    it "password(パスワード)が6文字未満の場合、userが無効であること" do
       user.password = user.password_confirmation = "n" * 5
       expect(user).not_to be_valid
     end
@@ -68,7 +68,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  context 'ユーザーを削除した場合' do
+  context "ユーザーを削除した場合" do
     before do
       @other_user_spot = create(:spot)
       @user_created_spot = create(:spot, user_id: user.id)
@@ -76,15 +76,15 @@ RSpec.describe User, type: :model do
       @user_like = create(:like, user_id: user.id, spot_id: @other_user_spot.id)
     end
 
-    it 'ユーザーが投稿したスポットも併せて削除されること' do
+    it "ユーザーが投稿したスポットも併せて削除されること" do
       expect { user.destroy }.to change(Spot, :count).by(-1)
     end
 
-    it 'ユーザーがスポットに投稿したコメントも併せて削除されること' do
+    it "ユーザーがスポットに投稿したコメントも併せて削除されること" do
       expect { user.destroy }.to change(Comment, :count).by(-1)
     end
 
-    it 'ユーザーがスポットにしたいいね！も併せて削除されること' do
+    it "ユーザーがスポットにしたいいね！も併せて削除されること" do
       expect { user.destroy }.to change(Like, :count).by(-1)
     end
   end

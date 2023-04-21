@@ -23,14 +23,14 @@ RSpec.describe Like, type: :model do
     end
   end
 
-  context 'スポットを削除した場合' do
-    it 'スポットのいいね！も併せて削除されること' do
+  context "スポットを削除した場合" do
+    it "スポットのいいね！も併せて削除されること" do
       expect { spot.destroy }.to change(Like, :count).by(-1)
     end
   end
 
-  context 'ユーザーを削除した場合' do
-    it 'ユーザーのいいね！も併せて削除されること' do
+  context "ユーザーを削除した場合" do
+    it "ユーザーのいいね！も併せて削除されること" do
       expect { user.destroy }.to change(Like, :count).by(-1)
     end
   end

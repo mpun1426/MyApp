@@ -69,8 +69,8 @@ RSpec.describe Spot, type: :model do
     end
   end
 
-  context 'ユーザーを削除した場合' do
-    it 'ユーザーの投稿したスポットも併せて削除されること' do
+  context "ユーザーを削除した場合" do
+    it "ユーザーの投稿したスポットも併せて削除されること" do
       expect { user.destroy }.to change(Spot, :count).by(-1)
     end
   end

@@ -30,7 +30,7 @@ RSpec.describe "Comments", type: :request do
         expect(response).to have_http_status(302)
       end
 
-      it '同じスポットに複数回コメントを投稿できること' do
+      it "同じスポットに複数回コメントを投稿できること" do
         expect do
           2.times do
             post spot_comments_path(spot), params: { comment: { content: "コメント本文", user_id: user.id, spot_id: spot.id } }

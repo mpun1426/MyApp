@@ -46,10 +46,10 @@ RSpec.describe "Spots", type: :system do
 
       context "有効な値で投稿する場合" do
         before do
-          fill_in "spot[name]", with: "新規投稿のスポット名"
-          fill_in "spot[address]", with: "新規投稿の所在地"
-          fill_in "spot[feature]", with: "新規投稿の特徴"
-          fill_in "spot[describe]", with: "新規投稿の説明"
+          fill_in 'spot[name]', with: "新規投稿のスポット名"
+          fill_in 'spot[address]', with: "新規投稿の所在地"
+          fill_in 'spot[feature]', with: "新規投稿の特徴"
+          fill_in 'spot[describe]', with: "新規投稿の説明"
         end
 
         it "正常に投稿が完了すること" do
@@ -64,8 +64,8 @@ RSpec.describe "Spots", type: :system do
 
       context "無効な値で投稿しようとする場合" do
         before do
-          fill_in "spot[name]", with: ""
-          fill_in "spot[address]", with: ""
+          fill_in 'spot[name]', with: ""
+          fill_in 'spot[address]', with: ""
         end
 
         it "エラーメッセージが表示されること" do
@@ -113,10 +113,10 @@ RSpec.describe "Spots", type: :system do
 
         context "有効な値で編集完了する場合" do
           before do
-            fill_in "spot[name]", with: "スポット名編集"
-            fill_in "spot[address]", with: "所在地編集"
-            fill_in "spot[feature]", with: "特徴編集"
-            fill_in "spot[describe]", with: "説明編集"
+            fill_in 'spot[name]', with: "スポット名編集"
+            fill_in 'spot[address]', with: "所在地編集"
+            fill_in 'spot[feature]', with: "特徴編集"
+            fill_in 'spot[describe]', with: "説明編集"
           end
 
           it "正常に編集を完了すること" do
@@ -136,8 +136,8 @@ RSpec.describe "Spots", type: :system do
 
         context "無効な値で編集完了しようとする場合" do
           before do
-            fill_in "spot[name]", with: ""
-            fill_in "spot[address]", with: ""
+            fill_in 'spot[name]', with: ""
+            fill_in 'spot[address]', with: ""
             click_button "投稿を完了する"
           end
 

@@ -6,7 +6,7 @@ RSpec.describe "Likes", type: :system do
   let!(:other_spot) { create(:spot, name: "他のスポット") }
   let!(:like) { create(:like, user_id: user.id, spot_id: liked_spot.id) }
 
-  describe "いいね！したスポット一覧" do
+  describe "いいね！したスポット一覧ページ" do
     context "ログイン済の場合" do
       before do
         visit new_user_session_path

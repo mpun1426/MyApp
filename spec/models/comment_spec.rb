@@ -28,14 +28,14 @@ RSpec.describe Comment, type: :model do
     end
   end
 
-  context 'スポットを削除した場合' do
-    it 'スポットのコメントも併せて削除されること' do
+  context "スポットを削除した場合" do
+    it "スポットのコメントも併せて削除されること" do
       expect { spot.destroy }.to change(Comment, :count).by(-1)
     end
   end
 
-  context 'ユーザーを削除した場合' do
-    it 'ユーザーのコメントも併せて削除されること' do
+  context "ユーザーを削除した場合" do
+    it "ユーザーのコメントも併せて削除されること" do
       expect { user.destroy }.to change(Comment, :count).by(-1)
     end
   end
