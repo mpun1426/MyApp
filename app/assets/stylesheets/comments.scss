@@ -1,0 +1,37 @@
+// Place all the styles related to the comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.font12 {
+  font-size: 12px;
+}
+
+.font14 {
+  font-size: 14px;
+}
+
+.font14-16 {
+  font-size: clamp(14px, 3vw, 16px);
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.mt--07 {
+  margin-top: -0.7em;
+}
+
+.width68 {
+  width: 68%;
+}
+
+.nowrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.max100 {
+  max-width: 100px;
+}

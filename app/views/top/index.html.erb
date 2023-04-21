@@ -1,0 +1,36 @@
+<%= render 'shared/spotmenu' %>
+<div class="container-fluid p-0" data-turbolinks="false">
+  <div id="carouselExampleIndicators" class="carousel slide  position-relative" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" style="width: 300px; margin-right: 12px;" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" style="width: 300px;" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" style="width: 300px; margin-left: 12px;" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner opacity03" style="max-height: 800px;">
+      <div class="carousel-item active">
+        <%= image_tag 'top1.jpg', class: "w-100 topbgimage", alt: "slider1-img", style: "object-position: 0 60%;" %>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag 'top2.jpg', class: "w-100 topbgimage", alt: "slider2-img", style: "object-position: 0 60%;" %>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag 'top3.jpg', class: "w-100 topbgimage", alt: "slider3-img", style: "object-position: 0 40%;" %>
+      </div>
+    </div>
+    <div class="col-12 col-md-10 col-xl-9 ps-2 position-absolute top-50 start-50 translate-middle">
+      <h1 class="font-m-700 topsentence-h1">ItteMiyoへようこそ</h1>
+      <h6 class="font-m-500 lh-lg topsentence-h6">
+        <ruby>ItteMiyo<rt>行ってみよう</rt></ruby>：おすすめスポットに行ってみよう！<br>
+        <ruby>ItteMiyo<rt>行ってみぃよ</rt></ruby>：おすすめするから行ってごらん！
+      </h6>
+      <h5 class="font-m-500 topsentence-h5">
+        誰もが知る有名スポットから知る人ぞ知るコアなスポットまで<br>
+        おすすめ観光スポットを共有しあおう！そして行ってみよう！
+      </h5>
+      <div class="d-grid gap-2 col-6 col-md-7 col-lg-5 mx-auto">
+        <div class="d-sm-none"><%= link_to "スポット一覧を見てみる", spots_path, class: "btn btn-dark topspotbutton" %></div>
+        <div class="d-none d-sm-block"><%= link_to "スポット一覧を見てみる", spots_path, class: "btn btn-dark topspotbutton-md" %></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,145 @@
+<%= render 'shared/page_title', page_title: @spot.name %>
+<%= render 'shared/spotmenu' %>
+<div class="container-fluid" data-turbolinks="false">
+  <div class="row justify-content-center font-m-400">
+    <div class="col-md-11 my-4 px-4" style="background-color:white; max-width:1100px;">
+      <h1 class="mb-0 font18-26"><%= @spot.name %></h1>
+      <div class="row gx-0 justify-content-end">
+        <div class="col-12 col-md-6">
+          <p class="spot-address-show mb-0 d-inline-block font11-16"><%= @spot.address %></p>
+        </div>
+        <div class="col-6 d-flex justify-content-end font14-18">
+          <div data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="コメント">
+            <p class="spot-option-show mb-1 me-3 me-sm-4 d-inline-block">
+              <i class="fa-regular fa-comment"></i>&nbsp;&nbsp;<%= @comments.length %>
+            </p>
+          </div>
+          <% if current_user.present? %>
+            <div class="d-inline-block" id="likes_button" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="いいね！">
+              <%= render 'likes/likes', spot: @spot %>
+            </div>
+          <% else %>
+            <div data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="いいね！">
+              <p class="spot-option-show mb-1 me-1 me-sm-2 d-inline-block">
+                <i class="fa-regular fa-heart"></i>&nbsp;&nbsp;<%= @spot.likes.length %>
+              </p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <% if @spot.images.attached? %>
+        <div class="container-fluid mb-3 px-0">
+          <div class="row flex-row">
+            <div id="carousel" class="carousel slide carousel-fade col-10 pe-0 pe-sm-3" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <% @spot.images.each_with_index do |image, index| %>
+                  <div class="carousel-item <%= "active" if index.zero? %>" data-thumb="<%= index %>">
+                    <%= image_tag image.variant(resize: "800x600", gravity: "center", crop: "700x520+0+0", quality: 80).processed, class: "w-100" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <div id="thumbcarousel" class="col carousel slide d-flex flex-column justify-content-center" data-interval="false">
+              <% @spot.images.each_with_index do |image, index| %>
+                <%= image_tag image.variant(resize: "800x600", gravity: "center", crop: "700x520+0+0", quality: 80).processed, class: "w-100 my-2", "data-bs-target": "#carousel", "data-bs-slide-to": "#{index}" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <div class="container-fluid px-0">
+        <div class="row gx-0">
+          <div class="col-lg-8 pe-lg-3">
+            <div class="row gx-0">
+              <div class="col-10 pe-0 pb-3 border-bottom">
+                <p class="font-m-500 mb-0 font15-24"><%= @spot.user.nickname %>さんのおすすめスポット</p>
+                <span class="font12-17"><%= @spot.address %></span>
+              </div>
+              <div class="col-2 d-flex justify-content-end pb-3 border-bottom">
+                <% if @spot.user.avatar.present? %>
+                  <%= image_tag @spot.user.avatar.variant(resize: "200x200", gravity: "center", crop: "200x200+0+0", quality: 70).processed, class: "spotavatar" %>
+                <% else %>
+                  <%= image_tag 'sampleavatar.jpeg', class: "spotavatar" %>
+                <% end %>
+              </div>
+              <div class="col-12 border-bottom pt-3 pb-4 font12-17">
+                <span class="font-m-500">スポットの特徴<br>
+                  <% if @spot.feature.present? %>
+                    <%= @spot.feature %>
+                  <% else %>
+                    記入されていません
+                  <% end %>
+                </span>
+              </div>
+              <div class="col-12 border-bottom py-3 font11-16 minh150 mb-4">
+                <span>スポットの説明<br>
+                  <% if @spot.describe.present? %>
+                    <%= simple_format(@spot.describe, class: "mb-2") %>
+                  <% else %>
+                    記入されていません
+                  <% end %>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 mt-lg-3 ps-lg-3">
+            <% if current_user.present? %>
+              <div class="d-flex justify-content-between mb-3 font14-16">
+                <div><i class="fa-regular fa-comment"></i>&nbsp;コメント&nbsp;(<%= @comments.length %>)</div>
+                <div class="me-2"><span class="pointer" data-bs-toggle="modal" data-bs-target="#commentModal"><u>コメントする</u></span></div>
+              </div>
+            <% else %>
+              <div class="font14-16"><i class="fa-regular fa-comment"></i>&nbsp;コメント&nbsp;(<%= @comments.length %>)</div>
+              <div class="ms-1 mb-2 font12">コメントする場合はログインが必要です。</div>
+            <% end %>
+            <% if @comments.present? %>
+              <% @comments.first(3).each do |comment| %>
+                <div class="col border rounded mb-3 px-2">
+                  <span class="font14"><%= comment.user.nickname %>さんのコメント</span>
+                  <div class="font14-16"><%= comment.content %></div>
+                  <span class="font14">コメント日時: <%= l comment.created_at %></span>
+                </div>
+              <% end %>
+              <div class="font14 text-end pe-1 mt--07">
+                <%= link_to "全てのコメントを見る", spot_comments_path(@spot), class: "text-black" if @comments.length > 3 %>
+              </div>
+            <% else %>
+              <div class="col border my-3 p-2">
+                <span class="font14">まだコメントが投稿されていません</span>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="row gx-0">
+          <div class="col-lg-8 pe-lg-3 font14-16">
+            <%= link_to "スポット一覧に戻る", spots_path, class: "d-block text-black" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="commentModalLabel">コメントを投稿する</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <% if current_user.present? %>
+        <%= form_with(model: [@spot, @comment], method: :post) do |f| %>
+          <div class="modal-body">
+            <div class="mb-3">
+              <%= f.text_area :content, class: "form-control minh150", placeholder: "コメントを入力して下さい&#13;&#10;改行は全てのコメントページのみ反映されます".html_safe, required: true %>
+              <%= f.hidden_field :spot_id, value: @spot.id %>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-secondary me-4" data-bs-dismiss="modal">キャンセル</button>
+            <%= f.submit "投稿する", class: "btn btn-dark ms-4" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,85 @@
+// Place all the styles related to the Spots controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.spotmenu-link {
+  display: inline-block;
+  max-width: 100px;
+}
+
+.spot-describe {
+  overflow: auto;
+  max-height: 55px;
+}
+
+.spot-thumb {
+  border-radius: 10px !important;
+}
+
+.spot-text-main {
+  width: 95%;
+  font-size: 16px;
+  color: #000000;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.spot-address {
+  width: 60%;
+  font-size: 14px;
+  color: #717171;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.spot-text-sub {
+  font-size: 14px;
+  color: #717171;
+}
+
+.spot-address-show {
+  font-size: 14px;
+  color: #000000;
+  text-decoration: underline;
+}
+
+.spot-option-show {
+  font-size: 14px;
+  color: #000000;
+  text-decoration: none;
+}
+
+.spotavatar {
+  max-height: 50px;
+  border-radius: 50%;
+}
+
+.overhidden {
+  overflow: hidden;
+}
+
+.font11-16 {
+  font-size: clamp(11px, 2.5vw, 16px);
+}
+
+.font12-17 {
+  font-size: clamp(12px, 2.5vw, 17px);
+}
+
+.font14-18 p {
+  font-size: clamp(14px, 2vw, 18px);
+}
+
+.font15-24 {
+  font-size: clamp(15px, 2.5vw, 24px);
+}
+
+.font18-26 {
+  font-size: clamp(18px, 4vw, 26px);
+}
+
+.minh150 {
+  min-height: 150px !important;
+}

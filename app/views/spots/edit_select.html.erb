@@ -1,0 +1,37 @@
+<%= render 'shared/page_title', page_title: "編集するスポットを選択" %>
+<div class="container-fluid" data-turbolinks="false">
+  <% if current_user.present? %>
+    <div class="pt-3 text-center ps-md-5 pt-md-4 text-md-start font-m-700">
+      <% if @myspots.present? %>
+        <span class="font18-26">編集するスポットを選択して下さい</span>
+      <% else %>
+        <div class="font18-26">まだスポットを投稿していません</div>
+        <div class="my-3"><%= link_to "スポットを投稿する", new_spot_path, class: "text-black font-m-500" %></div>
+      <% end %>
+    </div>
+    <div class="row mb-3 mx-2">
+      <% if @myspots.present? %>
+        <% @myspots.each do |myspot| %>
+          <div class="col-12 col-md-6 col-lg-4 col-xl-3 p-3 p-md-4 d-flex justify-content-center">
+            <%= link_to edit_spot_path(myspot), class: "nondeco overhidden" do %>
+              <div class="card w-100 nonebutton">
+                <% if myspot.images.attached? %>
+                  <%= image_tag myspot.images.first.variant(resize: "800x600!", gravity: "center", crop: "690x430+0+0", quality: 70).processed, class: "card-img-top spot-thumb" %>
+                <% else %>
+                  <%= image_tag 'sample.jpg', class: "card-img-top spot-thumb", alt: "Spot photo" %>
+                <% end%>
+                <div class="card-body px-1 py-2">
+                  <h5 class="card-title spot-text-main font-m-500 mb-1"><%= myspot.name %></h5>
+                  <p class="card-text spot-address font-m-400 mb-1"><%= myspot.address %></p>
+                  <p class="card-text spot-describe spot-text-sub font-m-400 lh-sm pe-3 pb-1"><%= myspot.describe %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <%= render 'shared/nologin' %>
+  <% end %>
+</div>

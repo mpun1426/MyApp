@@ -1,0 +1,52 @@
+<%= form_with(model: spot) do |form| %>
+  <% if spot.errors.any? %>
+    <div id="error_explanation">
+      <span class="font18-26"><%= pluralize(spot.errors.count, "件") %>のエラーが発生しました</span>
+      <ul>
+        <% spot.errors.each do |error| %>
+          <li class="font11-16"><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="mb-3">
+    <%= form.label :name, "スポット名（タイトル）", class: "form-label" %>
+    <%= form.text_field :name, class: "form-control", placeholder: "正式名称 あるいは分かりやすい名称" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :address, "所在地（少なくとも都道府県はご記入下さい）", class: "form-label" %>
+    <%= form.text_field :address, class: "form-control", placeholder: "詳細なほど正確な地図が表示されます" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :feature, "スポットの特徴（一言アピールポイントなど）", class: "form-label" %>
+    <%= form.text_field :feature, class: "form-control", placeholder: "歴史ある建物、火山、青い海 など" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :describe, "スポットの詳細説明", class: "form-label" %>
+    <%= form.text_area :describe, class: "form-control", rows: "5", placeholder: "詳細な紹介文など自由に記入できます" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :images, "スポットの画像", class: "form-label mb-0" %><span class="d-block d-sm-inline small">（最大4枚･2MB/枚まで･jpeg､jpg､gif､png のみ）</span>
+    <%= form.file_field :images, class: "form-control mt-2", multiple: true, accept: "image/*" %>
+    <% if @spot.images.attached? %>
+      <div class="py-2">
+        アップロード済みの画像<span class="d-block d-sm-inline small">（変更する場合のみファイルを選択して下さい）</span>
+      </div>
+      <div class="d-flex">
+        <% @spot.images.each do |image| %>
+          <div class="w-25">
+            <% begin %>
+              <%= image_tag image.variant(resize: "800x600", gravity: "center", crop: "700x520+0+0", quality: 80).processed, class: "w-75" %>
+            <% rescue %>
+              <span class="font11-16">[エラー画像]</span>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <div class="py-3">
+    <%= form.submit "投稿を完了する", class: "btn btn-dark widebutton" %>
+  </div>
+<% end %>

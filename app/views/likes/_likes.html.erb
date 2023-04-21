@@ -1,0 +1,13 @@
+<% if spot.liked?(current_user) %>
+  <p class="spot-option-show mb-1 me-1 me-sm-2 d-inline-block">
+    <%= link_to spot_likes_path(spot), method: :delete, class: "text-black nondeco", remote: true do %>
+      <i class="fa-solid fa-heart" style="color: #FF2F40;"></i>&nbsp;&nbsp;<%= spot.likes.length %>
+    <% end %>
+  </p>
+<% else %>
+  <p class="spot-option-show mb-1 me-1 me-sm-2 d-inline-block">
+    <%= link_to spot_likes_path(spot), method: :post, class: "text-black nondeco", remote: true do %>
+      <i class="fa-regular fa-heart"></i>&nbsp;&nbsp;<%= spot.likes.length %>
+    <% end %>
+  </p>
+<% end %>

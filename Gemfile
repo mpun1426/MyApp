@@ -23,10 +23,20 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'devise'
+gem 'devise-i18n'
+gem 'carrierwave', '~> 2.0'
+gem 'mini_magick'
+gem 'dotenv-rails'
+gem 'geocoder'
+gem 'ransack'
+gem 'rails-i18n', '~> 6.0.0'
+gem 'active_storage_validations'
+gem 'aws-sdk-s3'
 
 group :production do
   gem 'unicorn', '~> 5.0'
@@ -35,6 +45,10 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails'
+  gem 'pry-rails'
+  gem 'factory_bot_rails'
+  gem 'rubocop-airbnb'
 end
 
 group :development do

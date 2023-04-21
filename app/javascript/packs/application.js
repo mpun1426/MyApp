@@ -7,7 +7,14 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-
+import "jquery"
+import "bootstrap"
+import "../src/application"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+$(function(){
+  setTimeout("$('.alert').fadeOut('fast')", 2500);
+  $('[data-bs-toggle="tooltip"]').tooltip();
+});

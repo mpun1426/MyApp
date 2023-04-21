@@ -1,0 +1,88 @@
+<%= render 'shared/page_title', page_title: "アカウント設定" %>
+<div class="py-3 bg-light">
+  <div class="container">
+    <div class="row justify-content-center py-4">
+      <div class="col-md-9 p-3" data-turbolinks="false">
+        <h2 class="wrapping-signup">アカウント設定</h2>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <h3 class="text-center d-block max600 mx-auto my-3 border-bottom pb-2 border-secondary border-2">アカウント編集</h3>
+        <div class="mx-auto pt-3 max600 text-center">現在のアバター</div>
+        <% if current_user.avatar.attached? %>
+          <div class="text-center mt-2 mb-4">
+            <%= image_tag current_user.avatar.variant(resize: "200x200", gravity: "center", crop: "200x200+0+0", quality: 70).processed %>
+          </div>
+        <% else %>
+          <div class="py-4 text-center">アバターは登録されていません</div>
+        <% end %>
+        <div class="mx-auto mb-2 max600"><span class="small">一言紹介とアバター以外は入力必須です</span></div>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <div class="mb-3 mx-auto max600">
+            <%= f.label :avatar, "アバターを更新する場合はファイルを選択", for: "formFile", class: "form-label" %><span class="small"> (jpg, jpeg, gif, png )</span>
+            <%= f.file_field :avatar, id: "formFile", class: "form-control", accept: "image/*" %>
+          </div>
+          <div class="form-floating mb-3 mx-auto max600">
+            <%= f.text_field :nickname, id: "floatingNickname", class: "form-control", placeholder: "ニックネーム", required: true %>
+            <%= f.label :nickname, "ニックネーム", for: "floatingNickname" %>
+          </div>
+          <div class="form-floating mb-3 mx-auto max600">
+            <%= f.email_field :email, id: "floatingInput", class: "form-control", placeholder: "メールアドレス", autocomplete: "email", required: true %>
+            <%= f.label :email, "メールアドレス", for: "floatingInput" %>
+          </div>
+          <div class="form-floating mb-3 mx-auto max600">
+            <%= f.text_field :introduction, id: "floatingIntro", class: "form-control", placeholder: "一言紹介" %>
+            <%= f.label :introduction, "一言紹介", for: "floatingIntro" %>
+          </div>
+          <div class="form-floating mb-3 mx-auto max600">
+            <%= f.password_field :current_password, id: "floatingPassword", class: "form-control", placeholder: "パスワード", required: true %>
+            <%= f.label :current_password, "更新する場合は現在のパスワードを入力", for: "floatingPassword" %>
+          </div>
+          <div class="mx-auto mb-2 ps-2 max600">
+            <span class="hoveropacity" data-bs-toggle="collapse" href="#collapseNewPassword" role="button" aria-expanded="false" aria-controls="collapseExample">
+              ▼ パスワードを変更する場合
+            </span>
+          </div>
+          <div class="collapse" id="collapseNewPassword">
+            <div class="form-floating mb-3 mx-auto max600">
+              <%= f.password_field :password, id: "floatingPassword", class: "form-control", placeholder: "パスワード" %>
+              <% if @minimum_password_length %>
+                <%= f.label :password, "新しいパスワード#{t('devise.shared.minimum_password_length', count: @minimum_password_length)}", for: "floatingPassword" %>
+              <% end %>
+            </div>
+            <div class="form-floating mb-3 mx-auto max600">
+              <%= f.password_field :password_confirmation, id: "floatingPasswordConfirmation", class: "form-control", placeholder: "パスワード（確認用）" %>
+              <%= f.label :password_confirmation, "新しいパスワード（確認用）", for: "floatingPasswordConfirmation" %>
+            </div>
+          </div>
+          <div class="pt-3 pb-4 mx-auto max600">
+            <%= f.submit "アカウント情報を更新する", class: "btn btn-dark widebutton" %>
+          </div>
+        <% end %>
+        <h3 class="text-center d-block max600 mx-auto mt-5 mb-4 border-bottom pb-2 border-secondary border-2">アカウント削除</h3>
+        <div class="small my-1 text-center">下記のボタンからアカウントを削除できます</div>
+        <div class="py-2 mx-auto max600">
+          <button type="button" class="btn btn-dark widebutton" data-bs-toggle="modal" data-bs-target="#staticBackdrop">アカウントを削除する</button>
+        </div>
+        <div class="mt-5 mx-auto text-center" style="font-size:18px;">
+          <%= link_to t('devise.shared.links.back'), :back, class: "btn btn-dark widebutton" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">アカウント削除</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body my-3">本当にアカウントを削除してもよろしいですか？</div>
+      <div class="modal-footer d-flex justify-content-around">
+        <button type="button" class="btn btn-secondary" style="width: 120px;" data-bs-dismiss="modal">削除しない</button>
+        <%= link_to registration_path(resource_name), method: :delete do %>
+          <button type="button" class="btn btn-dark" style="width: 120px;">削除する</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

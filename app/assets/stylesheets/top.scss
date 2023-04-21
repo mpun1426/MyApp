@@ -1,0 +1,188 @@
+// Place all the styles related to the shareco controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.underborder {
+  border-bottom: 1px solid #DADADA;
+}
+
+.headerheight {
+  height: 85px;
+  display: flex;
+  align-items: center;
+}
+
+.flashmessage {
+  position: fixed !important;
+  z-index: 10 !important;
+  width: 100% !important;
+}
+
+.top-space {
+  margin-top: 100px;
+}
+
+.bottom-space {
+  margin-bottom: 60px;
+}
+
+.nonebutton {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.topbgimage {
+  max-height: 700px;
+  object-fit: cover;
+}
+
+.topsentence-h1 {
+  font-size:clamp(36px, 6.5vw, 64px);
+}
+
+.topsentence-h6 {
+  font-size: clamp(16px, 3vw, 20px);
+}
+
+.topsentence-h5 {
+  font-size: clamp(12px, 3vw, 22px);
+}
+
+.topspotbutton-md {
+  margin-top: 30px;
+  height: 50px;
+  border-radius: 25px !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+}
+
+.topspotbutton-md:hover {
+  opacity: 0.8;
+  transition: 0.3s
+}
+
+.topspotbutton {
+  margin: 5px 0 25px;
+  height: 26px;
+  border-radius: 13px !important;
+  font-size: 14px !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+}
+
+.normallink {
+  text-decoration: none !important;
+}
+
+.normallink:hover {
+  text-decoration: underline !important;
+}
+
+.hoveropacity {
+  transition: 0.3s
+}
+
+.hoveropacity:hover {
+  opacity: 0.7;
+}
+
+.py6px {
+  padding: 6px 0 !important;
+}
+
+.font-white {
+  color: #FFFFFF !important;
+}
+
+.nondeco {
+  text-decoration: none;
+}
+
+.varcolor {
+  color: var;
+}
+
+.lborder {
+  border-left: 1px solid #000000;
+  margin-left: -1px;
+}
+
+.rborder {
+  border-right: 1px solid #000000;
+}
+
+.minwidth100 {
+  min-width: 150px;
+  text-align: center;
+}
+
+.opacity03 {
+  opacity: 0.3;
+}
+
+.font-k {
+  font-family: 'Kosugi Maru', sans-serif;
+}
+
+.font-m-400 {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: 400 !important;
+}
+
+.font-m-500 {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: 500 !important;
+}
+
+.font-m-700 {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: 700 !important;
+}
+
+.homeform {
+  height: 50px;
+  margin: 10px 0;
+}
+
+.searchform {
+  min-width: 220px;
+  border: 1px solid #E0E0E0 !important;
+  border-radius: 25px 0 0 25px !important;
+  border-right: none !important;
+  box-shadow: 0px 3px 5px #A0A0A0;
+}
+
+.searchbutton {
+  min-width: 70px;
+  border: 1px solid #000000 !important;
+  border-left: none !important;
+  border-radius: 0 25px 25px 0 !important;
+  box-shadow: 0px 3px 5px #A0A0A0;
+}
+
+.spotmenu-shadow {
+  box-shadow: 0px 0px 10px 0px #BBBBBB;
+}
+
+.mobilemenu {
+  height: 60px;
+  align-items: center;
+  border-top: 1px solid #EEEEEE;
+}
+
+.fs10 {
+  font-size: 10px;
+}
+
+.termlist h4 {
+  margin-top: 1.5rem;
+
+}
+
+.termlist p,ol {
+  font-size: clamp(11px, 2.5vw, 14px);
+}
