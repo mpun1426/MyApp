@@ -9,7 +9,7 @@
             <% if current_user.avatar.attached? %>
               <%= image_tag current_user.avatar.variant(resize: "200x200", gravity: "center", crop: "200x200+0+0", quality: 70).processed %>
             <% else %>
-              <%= image_tag 'sampleavatar.jpeg', size: '200x200' %>
+              <%= image_tag asset_path('sampleavatar.jpeg'), size: '200x200' %>
             <% end %>
           </div>
           <div class="col-12 col-lg-8 mx-auto">

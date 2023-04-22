@@ -59,7 +59,7 @@
                 <% if @spot.user.avatar.present? %>
                   <%= image_tag @spot.user.avatar.variant(resize: "200x200", gravity: "center", crop: "200x200+0+0", quality: 70).processed, class: "spotavatar" %>
                 <% else %>
-                  <%= image_tag 'sampleavatar.jpeg', class: "spotavatar" %>
+                  <%= image_tag asset_path('sampleavatar.jpeg'), class: "spotavatar" %>
                 <% end %>
               </div>
               <div class="col-12 border-bottom pt-3 pb-4 font12-17">

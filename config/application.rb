@@ -19,7 +19,7 @@ module MyApp
     # in config/environments, which are processed later.
     #
     config.time_zone = "Tokyo"
-    config.hosts << '.example.com'
+    config.hosts.clear
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
