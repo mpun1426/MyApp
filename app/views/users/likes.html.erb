@@ -13,7 +13,7 @@
                 <% if spot.images.attached? %>
                   <%= image_tag spot.images.first.variant(resize: "800x600!", gravity: "center", crop: "690x430+0+0", quality: 70).processed, class: "card-img-top spot-thumb" %>
                 <% else %>
-                  <%= image_tag 'sample.jpg', class: "card-img-top spot-thumb", alt: "Spot photo" %>
+                  <%= image_tag asset_path('sample.jpg'), class: "card-img-top spot-thumb", alt: "Spot photo" %>
                 <% end %>
                 <div class="card-body px-1 py-2">
                   <h5 class="card-title spot-text-main font-m-500 mb-1"><%= spot.name %></h5>

@@ -3,14 +3,14 @@
   <div class="row fs10 mobilemenu" data-turbolinks="false">
     <div class="col">
       <%= link_to root_path, class: "nondeco text-black" do %>
-        <div><%= image_tag 'home.jpeg', size: '30x30' %></div>
+        <div><%= image_tag asset_path('home.jpg'), size: '30x30' %></div>
         <div>トップページ</div>
       <% end %>
     </div>
     <div class="col">
       <div class="dropup">
         <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          <div><%= image_tag 'spot.png', size: '30x30' %></div>
+          <div><%= image_tag asset_path('spot.png'), size: '30x30' %></div>
           <div>スポットメニュー</div>
         </span>
         <ul class="dropdown-menu font-m-400">
@@ -29,7 +29,7 @@
     <div class="col">
       <div class="dropup">
         <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          <div><%= image_tag 'user.png', size: '30x30' %></div>
+          <div><%= image_tag asset_path('user.png'), size: '30x30' %></div>
           <div>ユーザーメニュー</div>
         </span>
         <ul class="dropdown-menu font-m-400">
