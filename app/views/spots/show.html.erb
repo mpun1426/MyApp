@@ -15,7 +15,10 @@
             </p>
           </div>
           <% if current_user.present? %>
-            <div class="d-inline-block" id="likes_button" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="いいね！">
+            <div class="d-none d-lg-inline-block" id="likes_button" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="いいね！">
+              <%= render 'likes/likes', spot: @spot %>
+            </div>
+            <div class="d-inline-block d-lg-none" id="likes_button_mobile">
               <%= render 'likes/likes', spot: @spot %>
             </div>
           <% else %>
@@ -59,7 +62,7 @@
                 <% if @spot.user.avatar.present? %>
                   <%= image_tag @spot.user.avatar.variant(resize: "200x200", gravity: "center", crop: "200x200+0+0", quality: 70).processed, class: "spotavatar" %>
                 <% else %>
-                  <%= image_tag asset_path('sampleavatar.jpeg'), class: "spotavatar" %>
+                  <%= image_tag asset_path('sampleavatar.jpg'), class: "spotavatar" %>
                 <% end %>
               </div>
               <div class="col-12 border-bottom pt-3 pb-4 font12-17">
