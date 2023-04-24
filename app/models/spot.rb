@@ -4,7 +4,7 @@ class Spot < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many_attached :images
   MAX_IMAGES_COUNT = 4
-  MAX_IMAGE_SIZE = 2
+  MAX_IMAGE_SIZE = 10
 
   def liked?(user)
     likes.exists?(user_id: user.id)
