@@ -100,9 +100,14 @@ ___
 - devise（ユーザー機能）
 - ransack（検索・絞込機能）
 
+**デプロイ関連**
+- AWS: EC2, S3, Route53, ACM, ALB 等
+- サーバー: Nginx, unicorn
+
+<br>
+
 ## 🛠 インフラ構成図
-img インフラ構成図
+![インフラ図](https://user-images.githubusercontent.com/113075758/234767273-10f42dd9-9872-487d-85b6-da13f171aa33.png)
 
 ## 📝 ER図
 ![ERD](https://user-images.githubusercontent.com/113075758/234051146-fdd52d3e-11e5-44d6-ba18-7cec3f6e6853.jpeg)
-
